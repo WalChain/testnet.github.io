@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+console.log(window.location.pathname);
 if (window.location.pathname === '/walchain.github.io') {
   document.addEventListener('DOMContentLoaded', function () {
     const click = () => {
