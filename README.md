@@ -1,1 +1,1 @@
-# testnet.github.io
+# Walchain testnet homepage
