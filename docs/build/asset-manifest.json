@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/walchain.github.io/static/css/main.9208a38b.chunk.css",
+    "main.js": "/walchain.github.io/static/js/main.d47186b1.chunk.js",
+    "main.js.map": "/walchain.github.io/static/js/main.d47186b1.chunk.js.map",
+    "runtime-main.js": "/walchain.github.io/static/js/runtime-main.0d3ac0c8.js",
+    "runtime-main.js.map": "/walchain.github.io/static/js/runtime-main.0d3ac0c8.js.map",
+    "static/js/2.968708bb.chunk.js": "/walchain.github.io/static/js/2.968708bb.chunk.js",
+    "static/js/2.968708bb.chunk.js.map": "/walchain.github.io/static/js/2.968708bb.chunk.js.map",
+    "static/js/3.8c3c6aaf.chunk.js": "/walchain.github.io/static/js/3.8c3c6aaf.chunk.js",
+    "static/js/3.8c3c6aaf.chunk.js.map": "/walchain.github.io/static/js/3.8c3c6aaf.chunk.js.map",
+    "index.html": "/walchain.github.io/index.html",
+    "static/css/main.9208a38b.chunk.css.map": "/walchain.github.io/static/css/main.9208a38b.chunk.css.map",
+    "static/js/2.968708bb.chunk.js.LICENSE.txt": "/walchain.github.io/static/js/2.968708bb.chunk.js.LICENSE.txt",
+    "static/js/main.d47186b1.chunk.js.LICENSE.txt": "/walchain.github.io/static/js/main.d47186b1.chunk.js.LICENSE.txt",
+    "static/media/PolkaIcon.d7512b26.svg": "/walchain.github.io/static/media/PolkaIcon.d7512b26.svg",
+    "static/media/WalchainLogo.0c22f1af.svg": "/walchain.github.io/static/media/WalchainLogo.0c22f1af.svg",
+    "static/media/Miw.module.scss": "/walchain.github.io/static/media/background.54c41d3e.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0d3ac0c8.js",
+    "static/js/2.968708bb.chunk.js",
+    "static/css/main.9208a38b.chunk.css",
+    "static/js/main.d47186b1.chunk.js"
+  ]
+}
