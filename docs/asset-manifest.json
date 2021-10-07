@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/walchain.github.io/static/css/main.9208a38b.chunk.css",
-    "main.js": "/walchain.github.io/static/js/main.f1debad5.chunk.js",
-    "main.js.map": "/walchain.github.io/static/js/main.f1debad5.chunk.js.map",
-    "runtime-main.js": "/walchain.github.io/static/js/runtime-main.0d3ac0c8.js",
-    "runtime-main.js.map": "/walchain.github.io/static/js/runtime-main.0d3ac0c8.js.map",
-    "static/js/2.3bd63bba.chunk.js": "/walchain.github.io/static/js/2.3bd63bba.chunk.js",
-    "static/js/2.3bd63bba.chunk.js.map": "/walchain.github.io/static/js/2.3bd63bba.chunk.js.map",
-    "static/js/3.8c3c6aaf.chunk.js": "/walchain.github.io/static/js/3.8c3c6aaf.chunk.js",
-    "static/js/3.8c3c6aaf.chunk.js.map": "/walchain.github.io/static/js/3.8c3c6aaf.chunk.js.map",
-    "index.html": "/walchain.github.io/index.html",
-    "static/css/main.9208a38b.chunk.css.map": "/walchain.github.io/static/css/main.9208a38b.chunk.css.map",
-    "static/js/2.3bd63bba.chunk.js.LICENSE.txt": "/walchain.github.io/static/js/2.3bd63bba.chunk.js.LICENSE.txt",
-    "static/js/main.f1debad5.chunk.js.LICENSE.txt": "/walchain.github.io/static/js/main.f1debad5.chunk.js.LICENSE.txt",
-    "static/media/PolkaIcon.d7512b26.svg": "/walchain.github.io/static/media/PolkaIcon.d7512b26.svg",
-    "static/media/WalchainLogo.0c22f1af.svg": "/walchain.github.io/static/media/WalchainLogo.0c22f1af.svg",
-    "static/media/Miw.module.scss": "/walchain.github.io/static/media/background.54c41d3e.jpg"
+    "main.css": "./static/css/main.8a777ed6.chunk.css",
+    "main.js": "./static/js/main.f1debad5.chunk.js",
+    "main.js.map": "./static/js/main.f1debad5.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.8cf7fc3e.js",
+    "runtime-main.js.map": "./static/js/runtime-main.8cf7fc3e.js.map",
+    "static/js/2.3bd63bba.chunk.js": "./static/js/2.3bd63bba.chunk.js",
+    "static/js/2.3bd63bba.chunk.js.map": "./static/js/2.3bd63bba.chunk.js.map",
+    "static/js/3.8c3c6aaf.chunk.js": "./static/js/3.8c3c6aaf.chunk.js",
+    "static/js/3.8c3c6aaf.chunk.js.map": "./static/js/3.8c3c6aaf.chunk.js.map",
+    "index.html": "./index.html",
+    "static/css/main.8a777ed6.chunk.css.map": "./static/css/main.8a777ed6.chunk.css.map",
+    "static/js/2.3bd63bba.chunk.js.LICENSE.txt": "./static/js/2.3bd63bba.chunk.js.LICENSE.txt",
+    "static/js/main.f1debad5.chunk.js.LICENSE.txt": "./static/js/main.f1debad5.chunk.js.LICENSE.txt",
+    "static/media/PolkaIcon.d7512b26.svg": "./static/media/PolkaIcon.d7512b26.svg",
+    "static/media/WalchainLogo.0c22f1af.svg": "./static/media/WalchainLogo.0c22f1af.svg",
+    "static/media/Miw.module.scss": "./static/media/background.54c41d3e.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.0d3ac0c8.js",
+    "static/js/runtime-main.8cf7fc3e.js",
     "static/js/2.3bd63bba.chunk.js",
-    "static/css/main.9208a38b.chunk.css",
+    "static/css/main.8a777ed6.chunk.css",
     "static/js/main.f1debad5.chunk.js"
   ]
 }
