@@ -1,0 +1,53 @@
+@import '../../../../index.scss';
+
+.block {
+  margin: 10px 20% 10px 20%;
+  position: absolute;
+  height: 500x;
+  top: 0%;
+}
+
+// Next effect //
+.nextEnterActive {
+  opacity: 0;
+  transform: translateX(500px);
+}
+.nextEnterDone {
+  opacity: 1;
+  transform: translateX(0px);
+  transition: all 200ms ease-in-out;
+}
+.nextExit {
+  opacity: 1;
+  transform: translateX(0px);
+}
+.nextExitActive {
+  opacity: 0;
+  transform: translateX(-500px);
+  transition: all 200ms ease-in-out;
+}
+// Back Button //
+.backEnterActive {
+  opacity: 0;
+  transform: translateX(-500px);
+}
+.backEnterDone {
+  opacity: 1;
+  transform: translateX(0px);
+  transition: all 200ms ease-in-out;
+}
+.backExit {
+  opacity: 1;
+  transform: translateX(0px);
+}
+.backExitActive {
+  opacity: 0;
+  transform: translateX(500px);
+  transition: all 200ms ease-in-out;
+}
+
+@media (max-width: $breakpoint-sm) {
+  .block {
+    margin: 0 20px 0 20px;
+  }
+}

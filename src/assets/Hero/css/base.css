@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+
+.content {
+  height: 90vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+  background-color: #000000;
+}
+
+.scene {
+  height: 100%;
+  width: 100vw;
+  opacity: 1;
+  background-color: #000000;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 2s;
+}
+
+.content__inner {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.content__title {
+  color: #ffffff;
+  font-size: 108px;
+  letter-spacing: 42.77px;
+  margin: 0;
+  font-weight: 500;
+}
+
+.content__subtitle {
+  font-size: 35px;
+  color: white;
+  background-color: #fe022a;
+  padding: 10px 20px;
+  font-weight: 100;
+  letter-spacing: 7px;
+  white-space: nowrap;
+}
+
+.content__testnet {
+  color: #ffffff;
+  letter-spacing: 1.25px;
+  padding: 15px 90px;
+  font-weight: 300;
+  box-shadow: 0px 1px 3px #00000033;
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  white-space: nowrap;
+}
+
+.content__testnet:hover {
+  border-radius: 28px;
+  color: #000000;
+}
+
+.content__testnet:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: -1;
+  transform: scale(0.1);
+  transition: transform 0.3s, opacity 0.3s, background-color 0.3s;
+}
+
+.content__testnet:hover::after {
+  opacity: 1;
+  background-color: rgba(224, 255, 255, 0.9);
+  transform: scale(1);
+}
+
+/* Medium Size */
+@media only screen and (max-width: 769px) {
+  .content__title {
+    font-size: 75px;
+    letter-spacing: 20.77px;
+  }
+  .content__subtitle {
+    font-size: 30px;
+    padding: 5px 10px;
+    font-weight: 100;
+    letter-spacing: 4px;
+  }
+  .content__testnet {
+    letter-spacing: 0.75px;
+    padding: 10px 75px;
+  }
+}
+
+/* Small Size  */
+@media only screen and (max-width: 550px) {
+  .content__title {
+    font-size: 40px;
+    letter-spacing: 10.77px;
+  }
+  .content__subtitle {
+    font-size: 15px;
+    padding: 2px 5px;
+    font-weight: 100;
+    letter-spacing: 2px;
+  }
+  .content__testnet {
+    letter-spacing: 0px;
+    padding: 5px 20px;
+  }
+}
+
+/* Galaxy Fold  */
+@media only screen and (max-width: 300px) {
+  .content__title {
+    font-size: 30px;
+    letter-spacing: 10.77px;
+  }
+  .content__subtitle {
+    font-size: 11px;
+    padding: 2px 5px;
+    font-weight: 100;
+    letter-spacing: 2px;
+  }
+  .content__testnet {
+    letter-spacing: 0px;
+    padding: 5px 10px;
+  }
+}
+
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+}

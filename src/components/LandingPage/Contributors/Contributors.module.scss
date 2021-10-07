@@ -1,0 +1,41 @@
+@import '../../../index.scss';
+
+.container {
+  background-color: #000000;
+  .content {
+    width: 80%;
+    padding: 80px 10% 25px 10%;
+    .text {
+      color: #ffffff;
+      p {
+        margin: 0;
+        font-size: 30px;
+        font-family: 'Signika', sans-serif;
+      }
+    }
+    .contributors {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+      row-gap: 10px;
+      .avatar {
+        transition: transform 0.2s ease-in-out;
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+    .bottomText {
+      text-align: center;
+      color: #ffffff;
+      margin-top: 60px;
+      font-family: 'Signika', sans-serif;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .container > .content > .text > p {
+    font-size: 25px;
+  }
+}
