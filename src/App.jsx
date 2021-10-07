@@ -16,7 +16,7 @@ const App = () => {
 
   return (
     <SubstrateProvider>
-      <Router>
+      <Router basename='/walchain.github.io'>
         <div className='App' onClick={toggle}>
           <Navbar dropdown={dropdown} toggle={toggle} />
           <Switch>
