@@ -1,6 +1,6 @@
 import * as THREE from 'three';
-console.log(window.location.pathname);
-if (window.location.pathname === '/walchain.github.io/') {
+console.log(`animation : ${window.location.pathname}`);
+if (window.location.pathname === '/') {
   document.addEventListener('DOMContentLoaded', function () {
     const click = () => {
       const width = window.innerWidth;

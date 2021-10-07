@@ -4,6 +4,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 const reload = () => {
   let path = window.location.pathname;
+  console.log(`home link : ${path}`);
   if (path !== '/') {
     window.location.href = '/';
   }
@@ -25,12 +26,12 @@ const Navbar = ({ dropdown }) => {
             HOME
           </div>
 
-          <div className={styles.link} data-content='MARKETPLACE'>
+          {/* <div className={styles.link} data-content='MARKETPLACE'>
             MARKETPLACE
           </div>
           <div className={styles.link} data-content='ABOUT US'>
             ABOUT US
-          </div>
+          </div> */}
         </div>
         <div className={styles.dropdown}>
           <div className={styles.hamburger} data-dropdown>

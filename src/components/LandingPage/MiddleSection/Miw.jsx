@@ -15,7 +15,11 @@ const Miw = () => {
             collaboratifs et transparents mais aussi comme une opportunité de
             contribuer au redéploiement économique durable en Wallonie.
           </div>
-          <div className={styles.button}>START FREE NOW</div>
+          <div className={styles.button}>
+            <a href='https://walchain.be/' rel='noreferrer' target='_blank'>
+              EN SAVOIR PLUS
+            </a>
+          </div>
         </div>
       </div>
       <div className={styles.background}></div>

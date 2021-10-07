@@ -1,8 +1,8 @@
 import styles from './Polka.module.scss';
 import DownloadIcon from '@mui/icons-material/Download';
 import polkaIcon from '../../../assets/Polka/PolkaIcon.svg';
-import MenuBookIcon from '@mui/icons-material/MenuBook';
-import { Link } from 'react-router-dom';
+// import MenuBookIcon from '@mui/icons-material/MenuBook';
+// import { Link } from 'react-router-dom';
 
 const Polka = () => {
   return (
@@ -18,14 +18,14 @@ const Polka = () => {
             <br />
             N&apos;hésitez pas à suivre les instructions si vous êtes perdu 
           </div>
-          <Link to='instructions'>
+          {/* <Link to='instructions'>
             <div className={styles.button}>
               <div className={styles.download}>INSTRUCTIONS</div>
               <div className={styles.dll}>
                 <MenuBookIcon />
               </div>
             </div>
-          </Link>
+          </Link> */}
           <a
             href='https://polkadot.js.org/extension/'
             target='_blank rel="noreferrer" '
