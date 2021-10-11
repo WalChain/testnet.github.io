@@ -2,18 +2,18 @@ import * as THREE from 'three';
 console.log(`animation : ${window.location.pathname}`);
 if (window.location.pathname === '/') {
   document.addEventListener('DOMContentLoaded', function () {
-    const click = () => {
-      const width = window.innerWidth;
-      if (width > 970) {
-        window.scrollBy(0, 1400);
-      } else {
-        window.scrollBy(0, 1900);
-      }
-    };
+    // const click = () => {
+    //   const width = window.innerWidth;
+    //   if (width > 970) {
+    //     window.scrollBy(0, 1400);
+    //   } else {
+    //     window.scrollBy(0, 1900);
+    //   }
+    // };
 
-    document.getElementById('connection').addEventListener('click', () => {
-      click();
-    });
+    // document.getElementById('connection').addEventListener('click', () => {
+    //   click();
+    // });
     var canvas = document.querySelector('canvas');
     var width = canvas.offsetWidth,
       height = canvas.offsetHeight;
