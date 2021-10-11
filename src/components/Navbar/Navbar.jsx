@@ -26,12 +26,12 @@ const Navbar = ({ dropdown }) => {
             HOME
           </div>
 
-          {/* <div className={styles.link} data-content='MARKETPLACE'>
+          <div className={styles.link} data-content='MARKETPLACE'>
             MARKETPLACE
           </div>
           <div className={styles.link} data-content='ABOUT US'>
             ABOUT US
-          </div> */}
+          </div>
         </div>
         <div className={styles.dropdown}>
           <div className={styles.hamburger} data-dropdown>
@@ -41,8 +41,8 @@ const Navbar = ({ dropdown }) => {
             <div className={styles.smLink} onClick={() => reload()}>
               HOME
             </div>
-            {/* <div className={styles.smLink}>MARKETPLACE</div>
-            <div className={styles.smLink}>ABOUT US</div> */}
+            <div className={styles.smLink}>MARKETPLACE</div>
+            <div className={styles.smLink}>ABOUT US</div>
           </div>
         </div>
       </div>
