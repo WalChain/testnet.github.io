@@ -41,8 +41,8 @@ const Navbar = ({ dropdown }) => {
             <div className={styles.smLink} onClick={() => reload()}>
               HOME
             </div>
-            <div className={styles.smLink}>MARKETPLACE</div>
-            <div className={styles.smLink}>ABOUT US</div>
+            {/* <div className={styles.smLink}>MARKETPLACE</div>
+            <div className={styles.smLink}>ABOUT US</div> */}
           </div>
         </div>
       </div>
