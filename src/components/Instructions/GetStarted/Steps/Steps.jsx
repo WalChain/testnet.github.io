@@ -1,6 +1,6 @@
 import { CSSTransition } from 'react-transition-group';
 import styles from './Steps.module.scss';
-import Card from '../Card/Card';
+import Content from '../Content/Content';
 
 const Steps = ({ position, steps, countSteps }) => {
   return (
@@ -30,7 +30,7 @@ const Steps = ({ position, steps, countSteps }) => {
             }}
           >
             <div className={styles.block}>
-              <Card number={step} />
+              <Content number={step} />
             </div>
           </CSSTransition>
         );

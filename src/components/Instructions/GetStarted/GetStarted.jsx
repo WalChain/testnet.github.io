@@ -23,7 +23,6 @@ const Getstarted = ({ refProp }) => {
   };
   return (
     <div ref={refProp}>
-      <h2>Etapes à suivre</h2>
       <div className={styles.container}>
         <Steps
           position={position}

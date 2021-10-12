@@ -16,9 +16,9 @@ const Polka = () => {
             L&apos;extension et un compte polkadot seront nécessaires pour
             continuer.
             <br />
-            N&apos;hésitez pas à suivre les instructions si vous êtes perdu 
+            N&apos;hésitez pas à suivre les instructions si vous êtes perdu
           </div>
-          <Link to='instructions'>
+          <Link to='instructions' style={{ textDecoration: 'none' }}>
             <div className={styles.button}>
               <div className={styles.download}>INSTRUCTIONS</div>
               <div className={styles.dll}>
@@ -26,17 +26,17 @@ const Polka = () => {
               </div>
             </div>
           </Link>
-          <a
-            href='https://polkadot.js.org/extension/'
-            target='_blank rel="noreferrer" '
-          >
-            <div className={styles.button}>
+          <div className={styles.button}>
+            <a
+              href='https://polkadot.js.org/extension/'
+              target='_blank rel="noreferrer" '
+            >
               <div className={styles.download}>DOWNLOAD EXTENSION</div>
               <div className={styles.dll}>
                 <DownloadIcon />
               </div>
-            </div>
-          </a>
+            </a>
+          </div>
         </div>
       </div>
     </>

@@ -4,22 +4,20 @@
   margin-bottom: 50px;
   position: relative;
   overflow: hidden;
+  height: 70vh;
   .buttons {
     display: flex;
     justify-content: center;
-    padding-top: 230px;
+    position: absolute;
+    align-items: center;
+    width: 100%;
+    bottom: 50px;
     .back,
     .next {
       width: 200px;
       margin: 40px 30px;
     }
   }
-}
-
-h2 {
-  text-align: center;
-  margin-top: -100px;
-  margin-bottom: 50px;
 }
 
 @media (max-width: $breakpoint-md) {
