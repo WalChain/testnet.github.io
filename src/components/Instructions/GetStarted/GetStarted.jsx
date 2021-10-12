@@ -1,7 +1,8 @@
 import styles from './GetStarted.module.scss';
-import Button from '@mui/material/Button';
 import { useState } from 'react';
 import Steps from './Steps/Steps';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 
 const Getstarted = ({ refProp }) => {
   const [steps, setsteps] = useState(1);
@@ -32,21 +33,18 @@ const Getstarted = ({ refProp }) => {
           countSteps={countSteps}
         />
         <div className={styles.buttons}>
-          <Button
-            className={styles.back}
-            variant='contained'
-            onClick={() => change('back')}
-          >
-            BACK
-          </Button>
-          <Button
-            className={styles.next}
-            variant='contained'
-            color='success'
-            onClick={() => change('next')}
-          >
-            NEXT
-          </Button>
+          <div className={styles.back} onClick={() => change('back')}>
+            <div className={styles.icon}>
+              <NavigateBeforeIcon />
+            </div>
+            <div>PRECEDENT</div>
+          </div>
+          <div className={styles.next} onClick={() => change('next')}>
+            <div>SUIVANT</div>
+            <div className={styles.icon}>
+              <NavigateNextIcon />
+            </div>
+          </div>
         </div>
       </div>
     </div>
