@@ -1,4 +1,4 @@
-import Develop from '../components/Instructions/Develop/Develop';
+import Develop from '../components/Develop/Develop';
 
 const Dev = () => {
   return (
