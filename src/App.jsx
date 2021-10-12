@@ -5,6 +5,7 @@ import Navbar from './components/Navbar/Navbar';
 import LandingPage from './pages/LandingPage';
 import Instructions from './pages/Instructions';
 import { SubstrateProvider } from './services/substrate';
+import Dev from './pages/Dev';
 
 const App = () => {
   const [dropdown, setdropdown] = useState(false);
@@ -26,6 +27,7 @@ const App = () => {
               path='/instructions'
               component={() => <Instructions />}
             ></Route>
+            <Route exact path='/dev' component={() => <Dev />}></Route>
           </Switch>
         </div>
       </Router>
