@@ -87,7 +87,9 @@ export const SubstrateProvider = ({ children }) => {
   // Create a new Class/Collection //
   const createCollection = async (id, property, value) => {
     const fromAcct = await getFromAcct(main, api, keyring);
+    console.log(fromAcct);
     const create = [id, fromAcct];
+    console.log(id, property, value);
   };
 
   useEffect(() => {
