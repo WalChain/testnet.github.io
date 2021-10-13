@@ -10,6 +10,7 @@
     "@mui/material": "^5.0.1",
     "@polkadot/api": "^6.2.1",
     "@polkadot/extension-dapp": "^0.40.3",
+    "@polkadot/ui-keyring": "^0.85.5",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
