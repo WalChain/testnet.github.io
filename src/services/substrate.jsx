@@ -106,6 +106,7 @@ export const SubstrateProvider = ({ children }) => {
   //   console.log('InstanceCreated');
   // };
 
+
   useEffect(() => {
     connection();
   }, []);

@@ -1,6 +1,7 @@
 import styles from './Navbar.module.scss';
 import logo from '../../assets/Navbar/WalchainLogo.svg';
 import MenuIcon from '@mui/icons-material/Menu';
+import { forwardRef, useImperativeHandle, useState } from 'react';
 
 const reload = () => {
   let path = window.location.pathname;
@@ -10,7 +11,17 @@ const reload = () => {
   }
 };
 
-const Navbar = ({ dropdown }) => {
+const Navbar = forwardRef((props, ref) => {
+  const [dropdown, setdropdown] = useState(false);
+
+  useImperativeHandle(ref, () => ({
+    toggle(e) {
+      e.target.closest('[data-dropdown]')
+        ? setdropdown(!dropdown)
+        : setdropdown(false);
+    },
+  }));
+
   return (
     <div className={styles.nav}>
       <div className={styles.links}>
@@ -48,6 +59,8 @@ const Navbar = ({ dropdown }) => {
       </div>
     </div>
   );
-};
+});
+
+Navbar.displayName = 'Navbar';
 
 export default Navbar;
