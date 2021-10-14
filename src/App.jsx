@@ -1,24 +1,18 @@
 import './App.scss';
-import { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import LandingPage from './pages/LandingPage';
 import Instructions from './pages/Instructions';
 import { SubstrateProvider } from './services/substrate';
+import { useRef } from 'react';
 
 const App = () => {
-  const [dropdown, setdropdown] = useState(false);
-
-  const toggle = (e) =>
-    e.target.closest('[data-dropdown]')
-      ? setdropdown(!dropdown)
-      : setdropdown(false);
-
+  const childRef = useRef();
   return (
     <SubstrateProvider>
       <Router>
-        <div className='App' onClick={toggle}>
-          <Navbar dropdown={dropdown} toggle={toggle} />
+        <div className='App' onClick={(e) => childRef.current.toggle(e)}>
+          <Navbar ref={childRef} />
           <Switch>
             <Route exact path='/' component={() => <LandingPage />}></Route>
             <Route
