@@ -16,6 +16,7 @@ export const SubstrateProvider = ({ children }) => {
     const wsProvider = new WsProvider('wss://testnet-rpc.walchain.be:443');
     let con = await ApiPromise.create({ provider: wsProvider });
     setapi(con);
+    submitQueries(con);
   };
 
   const loadAccounts = async () => {
@@ -57,6 +58,16 @@ export const SubstrateProvider = ({ children }) => {
     }
   };
 
+  const submitQueries = async (api) => {
+    try {
+      const data = await api.query.uniques.class();
+      const value = data && data.value.toHuman();
+      console.log(data);
+      console.log(value);
+    } catch (e) {
+      console.log(e);
+    }
+  };
   // Transactions //
   const subtmitTransactions = (sender, transaction) => {
     return new Promise(async (resolve, reject) => {
@@ -84,13 +95,16 @@ export const SubstrateProvider = ({ children }) => {
     let txExecute = api.tx.faucet.claimTokens();
     return await subtmitTransactions(fromAcct, txExecute);
   };
-  // Create a new Class/Collection //
-  const createCollection = async (id, property, value) => {
-    const fromAcct = await getFromAcct(main, api, keyring);
-    console.log(fromAcct);
-    const create = [id, fromAcct];
-    console.log(id, property, value);
-  };
+
+  // // Create a new Class/Collection //
+  // const createCollection = async (id, property, value) => {
+  //   const fromAcct = await getFromAcct(main, api, keyring);
+  //   const create = [id, fromAcct];
+  // };
+
+  // const createInstance = async (classId, instanceId, property, value) => {
+  //   console.log('InstanceCreated');
+  // };
 
   useEffect(() => {
     connection();
@@ -104,7 +118,7 @@ export const SubstrateProvider = ({ children }) => {
         balances,
         getTokens,
         status,
-        createCollection,
+        main,
       }}
     >
       {children}
