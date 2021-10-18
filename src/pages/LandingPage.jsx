@@ -2,7 +2,6 @@ import Hero from '../components/LandingPage/Hero/Hero';
 import Miw from '../components/LandingPage/MiddleSection/Miw';
 import Polka from '../components/LandingPage/Polka/Polka';
 // import Contributors from '../components/LandingPage/Contributors/Contributors';
-import Footer from '../components/LandingPage/Footer/Footer';
 
 const LandingPage = () => {
   window.onpopstate = (e) => {
@@ -14,7 +13,6 @@ const LandingPage = () => {
       <Miw />
       <Polka />
       {/* <Contributors /> */}
-      <Footer />
     </>
   );
 };

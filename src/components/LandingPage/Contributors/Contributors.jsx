@@ -34,9 +34,7 @@ const Contributors = () => {
                 );
               })}
           </div>
-          <div className={styles.bottomText}>
-            Designed, developed and offered by mi8 / block0
-          </div>
+          <div className={styles.bottomText}>Designed, developed and offered by mi8 / block0</div>
         </div>
       </div>
     </>

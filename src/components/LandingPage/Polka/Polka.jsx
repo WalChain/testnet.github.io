@@ -13,8 +13,7 @@ const Polka = () => {
             <img src={polkaIcon} alt='' />
           </div>
           <div className={styles.text}>
-            L&apos;extension et un compte polkadot seront nécessaires pour
-            continuer.
+            L&apos;extension et un compte polkadot seront nécessaires pour continuer.
             <br />
             N&apos;hésitez pas à suivre les instructions si vous êtes perdu
           </div>
@@ -27,10 +26,7 @@ const Polka = () => {
             </div>
           </Link>
           <div className={styles.button}>
-            <a
-              href='https://polkadot.js.org/extension/'
-              target='_blank rel="noreferrer" '
-            >
+            <a href='https://polkadot.js.org/extension/' target='_blank rel="noreferrer" '>
               <div className={styles.download}>DOWNLOAD EXTENSION</div>
               <div className={styles.dll}>
                 <DownloadIcon />

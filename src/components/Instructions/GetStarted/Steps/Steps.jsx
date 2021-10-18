@@ -13,20 +13,10 @@ const Steps = ({ position, steps, countSteps }) => {
             timeout={0}
             mountOnEnter={true}
             classNames={{
-              enterActive:
-                position === 'next'
-                  ? styles.nextEnterActive
-                  : styles.backEnterActive,
-              enterDone:
-                position === 'next'
-                  ? styles.nextEnterDone
-                  : styles.backEnterDone,
-              exitActive:
-                position === 'next' ? styles.nextExit : styles.backExit,
-              exitDone:
-                position === 'next'
-                  ? styles.nextExitActive
-                  : styles.backExitActive,
+              enterActive: position === 'next' ? styles.nextEnterActive : styles.backEnterActive,
+              enterDone: position === 'next' ? styles.nextEnterDone : styles.backEnterDone,
+              exitActive: position === 'next' ? styles.nextExit : styles.backExit,
+              exitDone: position === 'next' ? styles.nextExitActive : styles.backExitActive,
             }}
           >
             <div className={styles.block}>

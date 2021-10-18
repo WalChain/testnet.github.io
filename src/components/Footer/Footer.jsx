@@ -16,13 +16,10 @@ const Footer = () => {
         </div>
         <hr />
         <div className={styles.text}>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas et
-          itaque culpa labore maiores veniam soluta assumenda sapiente
-          distinctio quod pariatur vero dolor repellat saepe, similique laborum
-          alias explicabo illo? Lorem ipsum, dolor sit amet consectetur
-          adipisicing elit. Molestias laborum incidunt suscipit! Laborum
-          blanditiis, aspernatur neque ratione dolore voluptatum rerum itaque
-          rem, alias modi corporis labore commodi doloremque amet dolorum.
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas et itaque culpa labore maiores veniam soluta assumenda sapiente distinctio
+          quod pariatur vero dolor repellat saepe, similique laborum alias explicabo illo? Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+          Molestias laborum incidunt suscipit! Laborum blanditiis, aspernatur neque ratione dolore voluptatum rerum itaque rem, alias modi corporis
+          labore commodi doloremque amet dolorum.
         </div>
         <div className={styles.blockicons}>
           <div className={styles.icons}>
@@ -32,9 +29,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className={styles.bottomText}>
-        Designed, developed and offered by mi8 / block0
-      </div>
+      <div className={styles.bottomText}>Designed, developed and offered by mi8 / block0</div>
     </div>
   );
 };

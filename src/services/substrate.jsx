@@ -2,7 +2,9 @@ import { createContext, useEffect, useState } from 'react';
 import { ApiPromise, WsProvider } from '@polkadot/api';
 import { web3Accounts, web3Enable } from '@polkadot/extension-dapp';
 import keyring from '@polkadot/ui-keyring';
-import { getFromAcct } from '../helpers/helpers';
+import { getFromAcct, submitTransactions, getAllCollections, getAllAssets } from '../helpers/helpers';
+import { beersColors, beersType, collectionsAttributes, instancesAttributes } from '../helpers/dataInfo';
+import beer from 'beer-names';
 
 export const SubstrateContext = createContext();
 export const SubstrateProvider = ({ children }) => {
@@ -16,7 +18,8 @@ export const SubstrateProvider = ({ children }) => {
     const wsProvider = new WsProvider('wss://testnet-rpc.walchain.be:443');
     let con = await ApiPromise.create({ provider: wsProvider });
     setapi(con);
-    submitQueries(con);
+    console.log(await getAllCollections(con));
+    console.log(await getAllAssets(con, 2));
   };
 
   const loadAccounts = async () => {
@@ -54,58 +57,40 @@ export const SubstrateProvider = ({ children }) => {
         .catch(console.error);
       return unsubscribeAll;
     } catch (e) {
-      console.log(e);
+      return;
     }
-  };
-
-  const submitQueries = async (api) => {
-    try {
-      const data = await api.query.uniques.class();
-      const value = data && data.value.toHuman();
-      console.log(data);
-      console.log(value);
-    } catch (e) {
-      console.log(e);
-    }
-  };
-  // Transactions //
-  const subtmitTransactions = (sender, transaction) => {
-    return new Promise(async (resolve, reject) => {
-      try {
-        const unsub = await transaction.signAndSend(sender, (result) => {
-          if (result.status.isFinalized) {
-            setStatus(
-              `😉 Finalized. Block hash: ${result.status.asFinalized.toString()}`
-            );
-            resolve();
-            unsub();
-          } else {
-            setStatus(`Current transaction status: ${result.status.type}`);
-          }
-        });
-      } catch (e) {
-        reject(e.toString());
-      }
-    });
   };
 
   // Get Tokens  //
   const getTokens = async (address) => {
     const fromAcct = await getFromAcct(address, api, keyring);
     let txExecute = api.tx.faucet.claimTokens();
-    return await subtmitTransactions(fromAcct, txExecute);
+    return await submitTransactions(fromAcct, txExecute, api, setStatus);
   };
 
-  // // Create a new Class/Collection //
-  // const createCollection = async (id, property, value) => {
-  //   const fromAcct = await getFromAcct(main, api, keyring);
-  //   const create = [id, fromAcct];
-  // };
+  // Create a new Class/Collection //
+  const createCollection = async (id, value) => {
+    const fromAcct = await getFromAcct(main, api, keyring);
+    const collection = [id, main];
+    const collectionName = [id, null, collectionsAttributes[0], value];
+    let txExecute = api.tx.uniques.create(...collection);
+    let setName = api.tx.uniques.setAttribute(...collectionName);
+    return await submitTransactions(fromAcct, [txExecute, setName], api, setStatus);
+  };
 
-  // const createInstance = async (classId, instanceId, property, value) => {
-  //   console.log('InstanceCreated');
-  // };
-
+  // Create a new Asset for a specific Collection //
+  const createAsset = async (id, instanceId) => {
+    const fromAcct = await getFromAcct(main, api, keyring);
+    const instance = [id, instanceId, fromAcct];
+    const name = [id, instanceId, instancesAttributes[0], beer.random()];
+    const color = [id, instanceId, instancesAttributes[1], beersColors[Math.floor(Math.random() * beersColors.length)]];
+    const type = [id, instanceId, instancesAttributes[2], beersType[Math.floor(Math.random() * beersType.length)]];
+    let txExecute = api.tx.uniques.mint(...instance);
+    let setName = api.tx.uniques.setAttribute(...name);
+    let setColor = api.tx.uniques.setAttribute(...color);
+    let setType = api.tx.uniques.setAttribute(...type);
+    return await submitTransactions(fromAcct, [txExecute, setName, setColor, setType], api, setStatus);
+  };
 
   useEffect(() => {
     connection();
@@ -120,6 +105,8 @@ export const SubstrateProvider = ({ children }) => {
         getTokens,
         status,
         main,
+        createCollection,
+        createAsset,
       }}
     >
       {children}

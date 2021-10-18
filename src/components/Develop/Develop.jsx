@@ -2,15 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { SubstrateContext } from '../../services/substrate';
 
 const Develop = () => {
-  const {
-    api,
-    loadAccounts,
-    accounts,
-    balances,
-    getTokens,
-    status,
-    createCollection,
-  } = useContext(SubstrateContext);
+  const { api, loadAccounts, accounts, balances, getTokens, status, createCollection, createAsset } = useContext(SubstrateContext);
   const [collection, setcollection] = useState({});
   const [instance, setinstance] = useState({});
   useEffect(() => {
@@ -34,14 +26,10 @@ const Develop = () => {
   const submit = (e, target) => {
     e.preventDefault();
     if (target === 'collection') {
-      createCollection(
-        collection.id,
-        Object.keys(collection)[1],
-        collection.name
-      );
+      createCollection(collection.id, collection.name);
     }
     if (target === 'instance') {
-      console.log(instance);
+      createAsset(instance.id, instance.instanceId);
     }
   };
 
@@ -54,9 +42,7 @@ const Develop = () => {
               <p>
                 {account.address} : {balances[`${account.address}`]}
               </p>
-              <button onClick={() => getTokens(account.address)}>
-                get token
-              </button>
+              <button onClick={() => getTokens(account.address)}>get token</button>
             </div>
           );
         })}
@@ -66,40 +52,16 @@ const Develop = () => {
       <br />
       <br />
       <form onSubmit={(e) => submit(e, 'collection')}>
-        <input
-          type='number'
-          name='id'
-          onChange={(e) => onChange(e, 'collection')}
-        />
-        <input
-          type='text'
-          name='name'
-          onChange={(e) => onChange(e, 'collection')}
-          placeholder='name'
-        />
+        <input type='number' name='id' onChange={(e) => onChange(e, 'collection')} />
+        <input type='text' name='name' onChange={(e) => onChange(e, 'collection')} placeholder='name' />
         <button type='submit'>create class</button>
       </form>
       <br />
       <br />
       <form onSubmit={(e) => submit(e, 'instance')}>
-        <input
-          type='number'
-          name='id'
-          onChange={(e) => onChange(e, 'instance')}
-        />
-        <input
-          type='text'
-          name='name'
-          placeholder='name'
-          onChange={(e) => onChange(e, 'instance')}
-        />
-        <input
-          type='text'
-          name='second'
-          placeholder='attributes'
-          onChange={(e) => onChange(e, 'instance')}
-        />
-        <button type='submit'>create asset</button>
+        <input type='number' name='id' onChange={(e) => onChange(e, 'instance')} />
+        <input type='number' name='instanceId' onChange={(e) => onChange(e, 'instance')} />
+        <button type='submit'>create beer</button>
       </form>
     </>
   );

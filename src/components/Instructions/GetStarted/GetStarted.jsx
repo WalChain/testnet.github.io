@@ -25,13 +25,7 @@ const Getstarted = ({ refProp }) => {
   return (
     <div ref={refProp}>
       <div className={styles.container}>
-        <Steps
-          position={position}
-          change={change}
-          steps={steps}
-          setsteps={setsteps}
-          countSteps={countSteps}
-        />
+        <Steps position={position} change={change} steps={steps} setsteps={setsteps} countSteps={countSteps} />
         <div className={styles.buttons}>
           <div className={styles.back} onClick={() => change('back')}>
             <div className={styles.icon}>

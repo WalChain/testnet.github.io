@@ -9,11 +9,9 @@ const Miw = () => {
           <div className={styles.MIW}>#MIW</div>
           <div className={styles.paragraph}>
             La blockchain En Wallonie. <br />
-            L’initiative WalChain, née du rassemblement de startups blockchain
-            wallonnes, vise à promouvoir la blockchain « Made In Wallonia »
-            comme outil novateur pour la construction d’écosystèmes
-            collaboratifs et transparents mais aussi comme une opportunité de
-            contribuer au redéploiement économique durable en Wallonie.
+            L’initiative WalChain, née du rassemblement de startups blockchain wallonnes, vise à promouvoir la blockchain « Made In Wallonia » comme
+            outil novateur pour la construction d’écosystèmes collaboratifs et transparents mais aussi comme une opportunité de contribuer au
+            redéploiement économique durable en Wallonie.
           </div>
           <div className={styles.button}>
             <a href='https://walchain.be/' rel='noreferrer' target='_blank'>

@@ -16,9 +16,7 @@ const Navbar = forwardRef((props, ref) => {
 
   useImperativeHandle(ref, () => ({
     toggle(e) {
-      e.target.closest('[data-dropdown]')
-        ? setdropdown(!dropdown)
-        : setdropdown(false);
+      e.target.closest('[data-dropdown]') ? setdropdown(!dropdown) : setdropdown(false);
     },
   }));
 
@@ -29,11 +27,7 @@ const Navbar = forwardRef((props, ref) => {
           <img className={styles.walchain} src={logo} alt='walchain logo' />
         </div>
         <div className={styles.mdLinks}>
-          <div
-            className={styles.link}
-            onClick={() => reload()}
-            data-content='HOME'
-          >
+          <div className={styles.link} onClick={() => reload()} data-content='HOME'>
             HOME
           </div>
 
