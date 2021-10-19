@@ -18,6 +18,12 @@ export const getFromAcct = async (main, api, keyring) => {
   return fromAcct;
 };
 
+export const getSingleCollection = async (id, api) => {
+  const collection = await api.query.uniques.class(id);
+  const creator = collection.toHuman() && collection.toHuman().owner;
+  return creator;
+};
+
 export const getAllCollections = async (api) => {
   try {
     let allCollections = Promise.all(

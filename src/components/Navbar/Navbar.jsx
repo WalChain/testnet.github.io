@@ -2,6 +2,7 @@ import styles from './Navbar.module.scss';
 import logo from '../../assets/Navbar/WalchainLogo.svg';
 import MenuIcon from '@mui/icons-material/Menu';
 import { forwardRef, useImperativeHandle, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const reload = () => {
   let path = window.location.pathname;
@@ -31,9 +32,9 @@ const Navbar = forwardRef((props, ref) => {
             HOME
           </div>
 
-          <div className={styles.link} data-content='MARKETPLACE'>
-            MARKETPLACE
-          </div>
+          <Link to='/collections' className={styles.link} data-content='COLLECTIONS'>
+            COLLECTIONS
+          </Link>
           <div className={styles.link} data-content='ABOUT US'>
             ABOUT US
           </div>
@@ -46,7 +47,11 @@ const Navbar = forwardRef((props, ref) => {
             <div className={styles.smLink} onClick={() => reload()}>
               HOME
             </div>
-            <div className={styles.smLink}>MARKETPLACE</div>
+            <div className={styles.smLink}>
+              <Link to='/collections' className='reactLink'>
+                COLLECTIONS
+              </Link>
+            </div>
             <div className={styles.smLink}>ABOUT US</div>
           </div>
         </div>

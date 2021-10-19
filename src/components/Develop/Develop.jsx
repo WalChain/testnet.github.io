@@ -1,11 +1,15 @@
 import { useContext, useEffect, useState } from 'react';
 import { SubstrateContext } from '../../services/substrate';
+import FadeLoader from 'react-spinners/FadeLoader';
 
 const Develop = () => {
-  const { api, loadAccounts, accounts, balances, getTokens, status, createCollection, createAsset } = useContext(SubstrateContext);
+  const { api, loadAccounts, accounts, balances, getTokens, status, createCollection, createAsset, createTonsAssets, loading, setloading } =
+    useContext(SubstrateContext);
   const [collection, setcollection] = useState({});
   const [instance, setinstance] = useState({});
+  const [tons, settons] = useState({});
   useEffect(() => {
+    setloading(true);
     api && loadAccounts();
     return () => api && loadAccounts();
   }, [api]);
@@ -21,6 +25,11 @@ const Develop = () => {
         return { ...prevState, [e.target.name]: e.target.value };
       });
     }
+    if (target === 'tons') {
+      settons((prevState) => {
+        return { ...prevState, [e.target.name]: e.target.value };
+      });
+    }
   };
 
   const submit = (e, target) => {
@@ -31,38 +40,59 @@ const Develop = () => {
     if (target === 'instance') {
       createAsset(instance.id, instance.instanceId);
     }
+    if (target === 'tons') {
+      createTonsAssets(tons.id);
+    }
   };
 
   return (
     <>
-      {accounts &&
+      {loading && (
+        <div className='spinner'>
+          <FadeLoader color='#8AE6D5' />
+        </div>
+      )}
+
+      {!loading &&
+        accounts &&
         accounts.map((account) => {
           return (
             <div key={account.address}>
               <p>
-                {account.address} : {balances[`${account.address}`]}
+                {account.meta.name}:{account.address} : {balances[`${account.address}`]}
               </p>
               <button onClick={() => getTokens(account.address)}>get token</button>
             </div>
           );
         })}
-      <br />
-      <br />
-      {status}
-      <br />
-      <br />
-      <form onSubmit={(e) => submit(e, 'collection')}>
-        <input type='number' name='id' onChange={(e) => onChange(e, 'collection')} />
-        <input type='text' name='name' onChange={(e) => onChange(e, 'collection')} placeholder='name' />
-        <button type='submit'>create class</button>
-      </form>
-      <br />
-      <br />
-      <form onSubmit={(e) => submit(e, 'instance')}>
-        <input type='number' name='id' onChange={(e) => onChange(e, 'instance')} />
-        <input type='number' name='instanceId' onChange={(e) => onChange(e, 'instance')} />
-        <button type='submit'>create beer</button>
-      </form>
+      {!loading && (
+        <div>
+          {' '}
+          <br />
+          <br />
+          {status}
+          <br />
+          <br />
+          <form onSubmit={(e) => submit(e, 'collection')}>
+            <input type='number' name='id' onChange={(e) => onChange(e, 'collection')} />
+            <input type='text' name='name' onChange={(e) => onChange(e, 'collection')} placeholder='name' />
+            <button type='submit'>create class</button>
+          </form>
+          <br />
+          <br />
+          <form onSubmit={(e) => submit(e, 'instance')}>
+            <input type='number' name='id' onChange={(e) => onChange(e, 'instance')} />
+            <input type='number' name='instanceId' onChange={(e) => onChange(e, 'instance')} />
+            <button type='submit'>create beer</button>
+          </form>
+          <br />
+          <br />
+          <form onSubmit={(e) => submit(e, 'tons')}>
+            <input type='number' name='id' onChange={(e) => onChange(e, 'tons')} />
+            <button type='submit'>GENERATE TONS</button>
+          </form>
+        </div>
+      )}
     </>
   );
 };

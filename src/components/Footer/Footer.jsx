@@ -2,14 +2,26 @@ import styles from './Footer.module.scss';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
-
+import { Link } from 'react-router-dom';
 const Footer = () => {
+  const reload = () => {
+    let path = window.location.pathname;
+    console.log(`home link : ${path}`);
+    if (path !== '/') {
+      window.location.href = '/';
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.content}>
         <div className={styles.links}>
-          <div>HOME</div>
-          <div>MARKETPLACE</div>
+          <div onClick={() => reload()}>HOME</div>
+          <div>
+            <Link className='reactLink' to='/collections'>
+              COLLECTIONS
+            </Link>
+          </div>
           <div>INSTRUCTIONS</div>
           <div>CONTACTS</div>
           <div>ABOUT</div>

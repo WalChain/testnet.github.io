@@ -2,3 +2,18 @@
 .App {
   margin-top: 109px;
 }
+
+.spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 90vh;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.reactLink {
+  text-decoration: none;
+  color: inherit;
+}

@@ -7,6 +7,7 @@ import { SubstrateProvider } from './services/substrate';
 import { useRef } from 'react';
 import Dev from './pages/Dev';
 import Footer from './components/Footer/Footer';
+import Collections from './pages/Collections';
 
 const App = () => {
   const childRef = useRef();
@@ -23,6 +24,7 @@ const App = () => {
               component={() => <Instructions />}
             ></Route>
             <Route exact path='/dev' component={() => <Dev />}></Route>
+            <Route exact path='/collections' component={() => <Collections />}></Route>
           </Switch>
           <Footer />
         </div>

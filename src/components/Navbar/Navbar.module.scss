@@ -34,6 +34,7 @@
         position: relative;
         padding: 40px 0px;
         transition: transform 0.2s ease-in-out;
+        text-decoration: none;
         &:hover {
           transform: translateY(-100px);
         }

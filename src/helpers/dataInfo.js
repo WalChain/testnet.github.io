@@ -1,5 +1,5 @@
-export const beersColors = ['Blonde', 'Brune', 'Ambre', 'Stout', 'Blanche'];
-export const beersType = ['1', '2', '3', '4'];
+export const beersColors = ['Blonde', 'Brune', 'Ambre', 'Stout', 'Blanche', 'White'];
+export const beersType = ['1', '2', '3', '4',];
 export const collectionsAttributes = ['name'];
 export const instancesAttributes = ['name', 'color', 'type'];
 
