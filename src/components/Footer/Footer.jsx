@@ -22,7 +22,11 @@ const Footer = () => {
               COLLECTIONS
             </Link>
           </div>
-          <div>INSTRUCTIONS</div>
+          <div>
+            <Link className='reactLink' to='/instructions'>
+              INSTRUCTIONS
+            </Link>
+          </div>
           <div>CONTACTS</div>
           <div>ABOUT</div>
         </div>

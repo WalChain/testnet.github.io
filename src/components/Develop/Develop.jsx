@@ -3,13 +3,12 @@ import { SubstrateContext } from '../../services/substrate';
 import FadeLoader from 'react-spinners/FadeLoader';
 
 const Develop = () => {
-  const { api, loadAccounts, accounts, balances, getTokens, status, createCollection, createAsset, createTonsAssets, loading, setloading } =
+  const { api, loadAccounts, accounts, balances, getTokens, status, createCollection, createAsset, createTonsAssets, loading } =
     useContext(SubstrateContext);
   const [collection, setcollection] = useState({});
   const [instance, setinstance] = useState({});
   const [tons, settons] = useState({});
   useEffect(() => {
-    setloading(true);
     api && loadAccounts();
     return () => api && loadAccounts();
   }, [api]);
@@ -61,7 +60,7 @@ const Develop = () => {
               <p>
                 {account.meta.name}:{account.address} : {balances[`${account.address}`]}
               </p>
-              <button onClick={() => getTokens(account.address)}>get token</button>
+              <button onClick={() => getTokens(api, account.address)}>get token</button>
             </div>
           );
         })}

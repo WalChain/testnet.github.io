@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from 'react';
 import { ApiPromise, WsProvider } from '@polkadot/api';
 import { web3Accounts, web3Enable } from '@polkadot/extension-dapp';
 import keyring from '@polkadot/ui-keyring';
-import { getFromAcct, submitTransactions, getAllCollections, getAllAssets } from '../helpers/helpers';
+import { getFromAcct, submitTransactions } from '../helpers/helpers';
 import { beersColors, beersType, collectionsAttributes, instancesAttributes } from '../helpers/dataInfo';
 import beer from 'beer-names';
 
@@ -16,12 +16,13 @@ export const SubstrateProvider = ({ children }) => {
   const [loading, setloading] = useState(false);
 
   const connection = async () => {
+    setloading(true);
     const wsProvider = new WsProvider('wss://testnet-rpc.walchain.be:443');
     let con = await ApiPromise.create({ provider: wsProvider });
+    setloading(false);
     setapi(con);
   };
   const loadAccounts = async () => {
-    setloading(true);
     try {
       await web3Enable('Walchain Testnet');
       let accs = await web3Accounts();
@@ -53,7 +54,6 @@ export const SubstrateProvider = ({ children }) => {
         })
         .then((unsub) => {
           unsubscribeAll = unsub;
-          setloading(false);
         })
         .catch(console.error);
       return unsubscribeAll;
@@ -85,7 +85,6 @@ export const SubstrateProvider = ({ children }) => {
       const name = [id, instanceId, instancesAttributes[0], beer.random()];
       const color = [id, instanceId, instancesAttributes[1], beersColors[Math.floor(Math.random() * beersColors.length)]];
       const type = [id, instanceId, instancesAttributes[2], beersType[Math.floor(Math.random() * beersType.length)]];
-      console.log(instance);
       let txExecute = api.tx.uniques.mint(...instance);
       let setName = api.tx.uniques.setAttribute(...name);
       let setColor = api.tx.uniques.setAttribute(...color);
@@ -105,7 +104,7 @@ export const SubstrateProvider = ({ children }) => {
     let txExecute = [];
     try {
       await Promise.all(
-        arrayNumber.flatMap(async (instanceId) => {
+        arrayNumber.map(async (instanceId) => {
           const instance = [id, instanceId, fromAcct];
           const name = [id, instanceId, instancesAttributes[0], beer.random()];
           const color = [id, instanceId, instancesAttributes[1], beersColors[Math.floor(Math.random() * beersColors.length)]];
@@ -140,9 +139,6 @@ export const SubstrateProvider = ({ children }) => {
         createCollection,
         createAsset,
         createTonsAssets,
-        getAllCollections,
-        getAllAssets,
-        setloading,
       }}
     >
       {children}
