@@ -4,9 +4,6 @@ import Polka from '../components/LandingPage/Polka/Polka';
 // import Contributors from '../components/LandingPage/Contributors/Contributors';
 
 const LandingPage = () => {
-  window.onpopstate = (e) => {
-    e.state === null && window.location.reload(false);
-  };
   return (
     <>
       <Hero />

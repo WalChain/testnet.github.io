@@ -207,12 +207,12 @@ const Hero = () => {
   const template = { __html: html };
   return (
     <div className={styles.content}>
-      {!loading && <div dangerouslySetInnerHTML={template} />}
       {loading && (
         <div className='spinner'>
           <RingLoader color='#8AE6D5' />
         </div>
       )}
+      {!loading && <div dangerouslySetInnerHTML={template} />}
     </div>
   );
 };

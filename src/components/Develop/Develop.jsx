@@ -66,7 +66,6 @@ const Develop = () => {
         })}
       {!loading && (
         <div>
-          {' '}
           <br />
           <br />
           {status}

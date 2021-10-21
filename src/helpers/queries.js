@@ -39,7 +39,11 @@ export const getAllAssets = async (api, id) => {
         const color = (tempColor.toHuman() && tempColor.toHuman()[0]) || 'No Color';
         const tempType = await api.query.uniques.attribute(id, instanceId, instancesAttributes[2]);
         const type = (tempType.toHuman() && tempType.toHuman()[0]) || 'No Type';
-        return { owner, name, color, type };
+        const tempCategory = await api.query.uniques.attribute(id, instanceId, instancesAttributes[3]);
+        const category = (tempCategory.toHuman() && tempCategory.toHuman()[0]) || 'No Category';
+        const tempIdentifier = await api.query.uniques.attribute(id, instanceId, instancesAttributes[4]);
+        const identifier = (tempIdentifier.toHuman() && tempIdentifier.toHuman()[0]) || 'No ID but not possible';
+        return { owner, name, color, type, category, identifier, flip: false };
       })
     );
     return allInstances;

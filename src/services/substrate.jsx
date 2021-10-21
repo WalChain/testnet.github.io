@@ -2,8 +2,7 @@ import { createContext, useEffect, useState } from 'react';
 import { ApiPromise, WsProvider } from '@polkadot/api';
 import { web3Accounts, web3Enable } from '@polkadot/extension-dapp';
 import keyring from '@polkadot/ui-keyring';
-import { getFromAcct, submitTransactions } from '../helpers/helpers';
-import { beersColors, beersType, collectionsAttributes, instancesAttributes } from '../helpers/dataInfo';
+import { helper, attributes } from '../helpers';
 import beer from 'beer-names';
 
 export const SubstrateContext = createContext();
@@ -13,21 +12,20 @@ export const SubstrateProvider = ({ children }) => {
   const [balances, setbalances] = useState({});
   const [main, setmain] = useState('');
   const [status, setStatus] = useState('Nothing for the moment');
-  const [loading, setloading] = useState(false);
-
+  const [loading, setloading] = useState(true);
+  const { beersColors, beersType, collectionsAttributes, instancesAttributes } = attributes;
   const connection = async () => {
-    setloading(true);
     const wsProvider = new WsProvider('wss://testnet-rpc.walchain.be:443');
     let con = await ApiPromise.create({ provider: wsProvider });
-    setloading(false);
     setapi(con);
+    setloading(false);
   };
+
   const loadAccounts = async () => {
     try {
       await web3Enable('Walchain Testnet');
       let accs = await web3Accounts();
       keyring.loadAll({ isDevelopment: true }, accs);
-
       accs = accs.map(({ address, meta }) => {
         return {
           address: address,
@@ -63,33 +61,48 @@ export const SubstrateProvider = ({ children }) => {
   };
 
   // Get Tokens  //
-  const getTokens = async (address) => {
-    const fromAcct = await getFromAcct(address, api, keyring);
-    let txExecute = api.tx.faucet.claimTokens();
-    return await submitTransactions(fromAcct, txExecute, api, setStatus);
+  const getTokens = async (api, address) => {
+    try {
+      const fromAcct = await helper.getFromAcct(address, api, keyring);
+      let txExecute = api.tx.faucet.claimTokens();
+      return await helper.submitTransactions(fromAcct, txExecute, api, setStatus);
+    } catch (e) {
+      console.log(e);
+    }
   };
   // Create a new Class/Collection //
   const createCollection = async (id, value) => {
-    const fromAcct = await getFromAcct(main, api, keyring);
-    const collection = [id, main];
-    const collectionName = [id, null, collectionsAttributes[0], value];
-    let txExecute = api.tx.uniques.create(...collection);
-    let setName = api.tx.uniques.setAttribute(...collectionName);
-    return await submitTransactions(fromAcct, [txExecute, setName], api, setStatus);
+    try {
+      const fromAcct = await helper.getFromAcct(main, api, keyring);
+      const collection = [id, main];
+      const collectionName = [id, null, collectionsAttributes[0], value];
+      let txExecute = api.tx.uniques.create(...collection);
+      let setName = api.tx.uniques.setAttribute(...collectionName);
+      return await helper.submitTransactions(fromAcct, [txExecute, setName], api, setStatus);
+    } catch (e) {
+      return;
+    }
   };
   // Create a new Asset for a specific Collection //
   const createAsset = async (id, instanceId) => {
     try {
-      const fromAcct = await getFromAcct(main, api, keyring);
+      const fromAcct = await helper.getFromAcct(main, api, keyring);
       const instance = [id, instanceId, fromAcct];
-      const name = [id, instanceId, instancesAttributes[0], beer.random()];
+      let randomName = beer.random();
+      const suffixPos = randomName.indexOf(' ', randomName.indexOf(' ') + 1);
+      const firstName = randomName.substring(0, suffixPos);
+      const name = [id, instanceId, instancesAttributes[0], firstName];
       const color = [id, instanceId, instancesAttributes[1], beersColors[Math.floor(Math.random() * beersColors.length)]];
-      const type = [id, instanceId, instancesAttributes[2], beersType[Math.floor(Math.random() * beersType.length)]];
+      const type = [id, instanceId, instancesAttributes[2], randomName.substring(suffixPos + 1)];
+      const category = [id, instanceId, instancesAttributes[3], beersType[Math.floor(Math.random() * beersType.length)]];
+      const identifier = [id, instanceId, instancesAttributes[4], instanceId];
       let txExecute = api.tx.uniques.mint(...instance);
       let setName = api.tx.uniques.setAttribute(...name);
       let setColor = api.tx.uniques.setAttribute(...color);
+      let setCategory = api.tx.uniques.setAttribute(...category);
       let setType = api.tx.uniques.setAttribute(...type);
-      return await submitTransactions(fromAcct, [txExecute, setName, setColor, setType], api, setStatus);
+      let setIdentifier = api.tx.uniques.setAttribute(...identifier);
+      return await helper.submitTransactions(fromAcct, [txExecute, setName, setColor, setCategory, setType, setIdentifier], api, setStatus);
     } catch (e) {
       console.log(e);
       return;
@@ -100,23 +113,30 @@ export const SubstrateProvider = ({ children }) => {
   const createTonsAssets = async (id) => {
     let arrayNumber = Array.from(Array(150).keys());
     arrayNumber = arrayNumber.map((id) => id.toString());
-    const fromAcct = await getFromAcct(main, api, keyring);
+    const fromAcct = await helper.getFromAcct(main, api, keyring);
     let txExecute = [];
     try {
       await Promise.all(
         arrayNumber.map(async (instanceId) => {
           const instance = [id, instanceId, fromAcct];
-          const name = [id, instanceId, instancesAttributes[0], beer.random()];
+          let randomName = beer.random();
+          const suffixPos = randomName.indexOf(' ', randomName.indexOf(' ') + 1);
+          const firstName = randomName.substring(0, suffixPos);
+          const name = [id, instanceId, instancesAttributes[0], firstName];
           const color = [id, instanceId, instancesAttributes[1], beersColors[Math.floor(Math.random() * beersColors.length)]];
-          const type = [id, instanceId, instancesAttributes[2], beersType[Math.floor(Math.random() * beersType.length)]];
+          const type = [id, instanceId, instancesAttributes[2], randomName.substring(suffixPos + 1)];
+          const category = [id, instanceId, instancesAttributes[3], beersType[Math.floor(Math.random() * beersType.length)]];
+          const identifier = [id, instanceId, instancesAttributes[4], instanceId];
           let tx = api.tx.uniques.mint(...instance);
           let setName = api.tx.uniques.setAttribute(...name);
           let setColor = api.tx.uniques.setAttribute(...color);
+          let setCategory = api.tx.uniques.setAttribute(...category);
           let setType = api.tx.uniques.setAttribute(...type);
-          txExecute.push(tx, setName, setColor, setType);
+          let setIdentifier = api.tx.uniques.setAttribute(...identifier);
+          txExecute.push(tx, setName, setColor, setType, setCategory, setIdentifier);
         })
       );
-      return await submitTransactions(fromAcct, txExecute, api, setStatus);
+      return await helper.submitTransactions(fromAcct, txExecute, api, setStatus);
     } catch (e) {
       console.log(e);
     }
