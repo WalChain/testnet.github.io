@@ -1,0 +1,129 @@
+@import '../../../index.scss';
+
+.nav {
+  width: 100vw;
+  height: 109px;
+  background-color: #020607;
+  font-family: 'Signika', sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  .links {
+    padding: 0 8rem;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    .logo {
+      margin-right: auto;
+      width: 400px;
+      .walchain {
+        width: 350px;
+      }
+    }
+    .mdLinks {
+      display: flex;
+      overflow: hidden;
+      align-items: center;
+      height: 40px;
+      .link {
+        color: #757777;
+        margin: 0 1.5em;
+        cursor: pointer;
+        white-space: nowrap;
+        position: relative;
+        padding: 40px 0px;
+        transition: transform 0.2s ease-in-out;
+        text-decoration: none;
+        &:hover {
+          transform: translateY(-100px);
+        }
+        &::after {
+          content: attr(data-content);
+          position: absolute;
+          color: red;
+          width: 100%;
+          top: 100px;
+          padding: 40px 0px;
+          left: 0;
+        }
+      }
+    }
+    .dropdown {
+      margin: 0 1.5em;
+      position: relative;
+      display: none;
+      .hamburger {
+        color: white;
+        padding: 15px;
+        transform: scale(1.5);
+        cursor: pointer;
+        &:hover {
+          color: #5f9ea0;
+        }
+      }
+      .dropMenu {
+        top: 100%;
+        right: 0%;
+        width: 200px;
+        padding: 0.5rem 1rem;
+        background-color: #111516;
+        position: absolute;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 5;
+        transform: translateY(-10px);
+        transition: all 150ms ease-in-out;
+        &.active {
+          opacity: 1;
+          transform: translateY(0);
+          visibility: visible;
+        }
+        .smLink {
+          color: white;
+          padding: 4px 0px;
+          width: 100%;
+          cursor: pointer;
+          text-align: center;
+          display: block;
+          &:hover {
+            background-color: #f0f8ff;
+            color: black;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $breakpoint-md) {
+  .nav > .links {
+    padding: 0;
+    .logo > .walchain {
+      width: 270px;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .nav > .links {
+    padding: 0 1rem;
+    .link {
+      display: none;
+    }
+    .dropdown {
+      display: block;
+    }
+    .logo > .walchain {
+      width: 200px;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-galaxyfold) {
+  .nav > .links {
+    .logo > .walchain {
+      width: 100px;
+    }
+  }
+}

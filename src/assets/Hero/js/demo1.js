@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-console.log(`animation : ${window.location.pathname}`);
+export const demo = () => console.log('lmao');
 if (window.location.pathname === '/') {
   document.addEventListener('DOMContentLoaded', function () {
     // const click = () => {
@@ -17,11 +17,7 @@ if (window.location.pathname === '/') {
     var canvas = document.querySelector('canvas');
     var width = canvas.offsetWidth,
       height = canvas.offsetHeight;
-    var colors = [
-      new THREE.Color(0xac1122),
-      new THREE.Color(0x96789f),
-      new THREE.Color(0x535353),
-    ];
+    var colors = [new THREE.Color(0xac1122), new THREE.Color(0x96789f), new THREE.Color(0x535353)];
 
     var renderer = new THREE.WebGLRenderer({
       canvas: canvas,
@@ -57,9 +53,7 @@ if (window.location.pathname === '/') {
 
       vector.color = Math.floor(Math.random() * colors.length);
       vector.theta = Math.random() * Math.PI * 2;
-      vector.phi =
-        (((1 - Math.sqrt(Math.random())) * Math.PI) / 2) *
-        (Math.random() > 0.5 ? 1 : -1);
+      vector.phi = (((1 - Math.sqrt(Math.random())) * Math.PI) / 2) * (Math.random() > 0.5 ? 1 : -1);
 
       vector.x = Math.cos(vector.theta) * Math.cos(vector.phi);
       vector.y = Math.sin(vector.phi);

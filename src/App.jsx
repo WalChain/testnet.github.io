@@ -1,12 +1,12 @@
 import './App.scss';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Navbar from './components/Navbar/Navbar';
+import Navbar from './components/Global/Navbar/Navbar';
 import LandingPage from './pages/LandingPage';
 import Instructions from './pages/Instructions';
 import { SubstrateProvider } from './services/substrate';
 import { useRef } from 'react';
 import Dev from './pages/Dev';
-import Footer from './components/Footer/Footer';
+import Footer from './components/Global/Footer/Footer';
 import Collections from './pages/Collections';
 import Asset from './pages/Asset';
 
