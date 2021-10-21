@@ -34,6 +34,7 @@ $bgcard: #f0f8ff;
     perspective: 1000px;
     transition: transform 0.5s;
     transform-style: preserve-3d;
+    cursor: pointer;
     .identifier {
       position: absolute;
       top: 20px;

@@ -23,12 +23,12 @@ const Assetcomponent = () => {
   const indexOfFirstPost = indexOfLastAsset - assetsPerPage;
   const currentAssets = assets.slice(indexOfFirstPost, indexOfLastAsset);
   const handleChange = (e) => {
-    console.log(e.target.dataset.testid);
-    console.log(typeof currentPage);
     if (e.target.dataset.testid == 'NavigateNextIcon') {
       setcurrentPage(parseInt(currentPage) + 1);
     } else if (e.target.dataset.testid == 'NavigateBeforeIcon') {
       setcurrentPage(parseInt(currentPage) - 1);
+    } else if (e.target.innerText == '…') {
+      return;
     } else {
       setcurrentPage(parseInt(e.target.innerText));
     }
@@ -53,9 +53,26 @@ const Assetcomponent = () => {
                 <div className={styles.title}>{asset.name}</div>
                 <div className={styles.identifier}>{asset.identifier}</div>
                 <div className={styles.type}>{asset.type}</div>
-                <div className={styles.img}>
-                  <Svg1 />
-                </div>
+                {asset.category === '1' && (
+                  <div className={styles.img}>
+                    <Svg1 />
+                  </div>
+                )}
+                {asset.category === '2' && (
+                  <div className={styles.img}>
+                    <Svg2 />
+                  </div>
+                )}
+                {asset.category === '3' && (
+                  <div className={styles.img}>
+                    <Svg3 />
+                  </div>
+                )}
+                {asset.category === '4' && (
+                  <div className={styles.img}>
+                    <Svg4 />
+                  </div>
+                )}
                 <div className={`${styles.content} ${asset.flip && styles.opacity} ${!asset.flip && styles.hidden}`}>
                   <h3>{asset.name}</h3>
                   <p>Type : {asset.type}</p>
