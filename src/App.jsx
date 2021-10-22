@@ -8,7 +8,7 @@ import { useRef } from 'react';
 import Dev from './pages/Dev';
 import Footer from './components/Global/Footer/Footer';
 import Collections from './pages/Collections';
-import Asset from './pages/Asset';
+import Assets from './pages/Assets';
 
 const App = () => {
   const childRef = useRef();
@@ -22,7 +22,7 @@ const App = () => {
             <Route exact path='/instructions' component={() => <Instructions />}></Route>
             <Route exact path='/dev' component={() => <Dev />}></Route>
             <Route exact path='/collections' component={() => <Collections />}></Route>
-            <Route exact path='/asset/:id' component={() => <Asset />}></Route>
+            <Route exact path='/asset/:id' component={() => <Assets />}></Route>
           </Switch>
           <Footer />
         </div>

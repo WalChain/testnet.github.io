@@ -8,10 +8,16 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Link } from 'react-router-dom';
 
 const Allcollections = () => {
-  const { api, loading } = useContext(SubstrateContext);
+  const { api } = useContext(SubstrateContext);
   const [collections, setcollections] = useState([]);
-  useEffect(async () => {
-    api && setcollections(await queries.getAllCollections(api));
+  const [loading, setloading] = useState(true);
+  useEffect(() => {
+    const get = async () => {
+      const collections = await queries.getAllCollections(api);
+      setcollections(collections);
+      setloading(false);
+    };
+    api && get();
   }, [api]);
   return (
     <>
