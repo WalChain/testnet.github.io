@@ -17,13 +17,26 @@ const Assetscomponent = () => {
   let { id } = useParams();
   const [assets, setassets] = useState([]);
   const [currentPage, setcurrentPage] = useState(1);
-  const assetsPerPage = 15;
+  const assetsPerPage = (width) => {
+    if (width >= 1800) {
+      return 15;
+    }
+    if (width < 1800 && screen.width >= 1600) {
+      return 12;
+    }
+    if (width < 1600 && width > 500) {
+      return 9;
+    }
+    if (width < 500) {
+      return 5;
+    }
+  };
   const [loading, setloading] = useState(true);
-  let pageNumber = Math.ceil(assets.length / assetsPerPage);
+  let pageNumber = Math.ceil(assets.length / assetsPerPage(screen.width));
 
   // Get Current assets //
-  const indexOfLastAsset = currentPage * assetsPerPage;
-  const indexOfFirstPost = indexOfLastAsset - assetsPerPage;
+  const indexOfLastAsset = currentPage * assetsPerPage(screen.width);
+  const indexOfFirstPost = indexOfLastAsset - assetsPerPage(screen.width);
   const currentAssets = assets.slice(indexOfFirstPost, indexOfLastAsset);
   const handleChange = (e, page) => {
     page === null && null;
@@ -98,7 +111,12 @@ const Assetscomponent = () => {
               })}
           </div>
           <Stack className={styles.pagination} spacing={2}>
-            <Pagination count={pageNumber} color='primary' size='large' onChange={(e, page) => handleChange(e, page)} />
+            <Pagination
+              count={pageNumber}
+              color='primary'
+              size={`${screen.width > 400 ? 'large' : 'small'}`}
+              onChange={(e, page) => handleChange(e, page)}
+            />
           </Stack>
         </>
       )}
