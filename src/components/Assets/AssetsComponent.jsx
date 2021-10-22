@@ -5,12 +5,13 @@ import { SubstrateContext } from '../../services/substrate';
 import styles from './AssetsComponent.module.scss';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-import Svg1 from './svg/svg1';
-import Svg2 from './svg/svg2';
-import Svg3 from './svg/svg3';
-import Svg4 from './svg/svg4';
+import Original from '../../assets/assetsPage/original';
 import GridLoader from 'react-spinners/GridLoader';
 import ReactCardFlip from 'react-card-flip';
+import category1 from '../../assets/assetsPage/category1.jpg';
+import category2 from '../../assets/assetsPage/category2.jpg';
+import category3 from '../../assets/assetsPage/category3.jpg';
+import category4 from '../../assets/assetsPage/category4.jpg';
 
 const Assetscomponent = () => {
   const { api } = useContext(SubstrateContext);
@@ -18,18 +19,7 @@ const Assetscomponent = () => {
   const [assets, setassets] = useState([]);
   const [currentPage, setcurrentPage] = useState(1);
   const assetsPerPage = (width) => {
-    if (width >= 1800) {
-      return 15;
-    }
-    if (width < 1800 && screen.width >= 1600) {
-      return 12;
-    }
-    if (width < 1600 && width > 500) {
-      return 9;
-    }
-    if (width < 500) {
-      return 5;
-    }
+    return (width >= 1800 && 15) || (width < 1800 && screen.width >= 1600 && 12) || (width < 1600 && width > 500 && 9) || (width < 500 && 5);
   };
   const [loading, setloading] = useState(true);
   let pageNumber = Math.ceil(assets.length / assetsPerPage(screen.width));
@@ -49,6 +39,7 @@ const Assetscomponent = () => {
     allAssets[index].flip = !allAssets[index].flip;
     setassets(allAssets);
   };
+
   useEffect(() => {
     const get = async () => {
       const assets = await queries.getAllAssets(api, id);
@@ -75,30 +66,33 @@ const Assetscomponent = () => {
                       <div className={styles.title}>{asset.name}</div>
                       <div className={styles.identifier}>{asset.identifier}</div>
                       <div className={styles.type}>{asset.type}</div>
-                      {asset.category === '1' && (
-                        <div className={styles.img}>
-                          <Svg1 asset={asset} />
-                        </div>
-                      )}
-                      {asset.category === '2' && (
-                        <div className={styles.img}>
-                          <Svg2 asset={asset} />
-                        </div>
-                      )}
-                      {asset.category === '3' && (
-                        <div className={styles.img}>
-                          <Svg3 asset={asset} />
-                        </div>
-                      )}
-                      {asset.category === '4' && (
-                        <div className={styles.img}>
-                          <Svg4 asset={asset} />
-                        </div>
-                      )}
+                      <img
+                        src={
+                          (asset.category === '1' && category1) ||
+                          (asset.category === '2' && category2) ||
+                          (asset.category === '3' && category3) ||
+                          (asset.category === '4' && category4)
+                        }
+                        alt='background'
+                        className={styles.background}
+                      />
+                      <div className={styles.img}>
+                        <Original asset={asset} />
+                      </div>
                     </div>
 
                     <div className={`${styles.card}`} onClick={() => flip(asset)}>
                       <div className={styles.content}>
+                        <img
+                          src={
+                            (asset.category === '1' && category1) ||
+                            (asset.category === '2' && category2) ||
+                            (asset.category === '3' && category3) ||
+                            (asset.category === '4' && category4)
+                          }
+                          className={styles.background}
+                          alt='background'
+                        />
                         <h3>{asset.name}</h3>
                         <p>Type : {asset.type}</p>
                         <p>Color : {asset.color}</p>
