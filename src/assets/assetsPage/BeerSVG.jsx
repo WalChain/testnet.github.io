@@ -1,10 +1,16 @@
-const original = (props) => {
-  const original = '#ffdd15';
+import { attributes } from '../../helpers';
+
+const BeerSVG = (props) => {
   const { color, identifier } = props.asset;
-  console.log(color);
   const first = identifier.split('').at(-1);
-  const entire = (color) => {
-    return (color === 'Blanche' && original) || (color === 'Blonde' && 'blue');
+  const bottleColor = () => {
+    return attributes.colors[color];
+  };
+  const bottleID = () => {
+    return attributes.idColor[first];
+  };
+  const emblemColor = () => {
+    return attributes.emblemColor[first];
   };
   return (
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 700'>
@@ -19,14 +25,14 @@ const original = (props) => {
         className='prefix__st1'
         d='M375 637v-20.5H124.6v24.8c0 20 13.6 35.5 32.1 35.5 29.8.1 59.5.2 89.3.2h.2c29.8 0 59.5-.1 89.3-.3 22.8-.1 39.4-17.6 39.5-39.7z'
         id='prefix___x31_0_x25_'
-        fill={entire(color)}
+        fill={bottleColor()}
       />
-      <path className='prefix__st1' fill={entire(color)} d='M124.6 616.5H375V556H124.6v60.5z' id='prefix___x32_0_x25_' />
-      <path className='prefix__st1' fill={entire(color)} d='M124.6 556H375v-60.5H124.6V556z' id='prefix___x33_0_x25_' />
-      <path className='prefix__st1' fill={entire(color)} d='M124.6 438.4v57H375c0-20.2 0-40.3.1-60.5H124.6v3.5z' id='prefix___x34_0_x25_' />
+      <path className='prefix__st1' fill={bottleColor()} d='M124.6 616.5H375V556H124.6v60.5z' id='prefix___x32_0_x25_' />
+      <path className='prefix__st1' fill={bottleColor()} d='M124.6 556H375v-60.5H124.6V556z' id='prefix___x33_0_x25_' />
+      <path className='prefix__st1' fill={bottleColor()} d='M124.6 438.4v57H375c0-20.2 0-40.3.1-60.5H124.6v3.5z' id='prefix___x34_0_x25_' />
       <path
         className='prefix__st1'
-        fill={entire(color)}
+        fill={bottleColor()}
         d='M124.5 374.8c.6 20 .2 40.1.1 60.1h250.5c.1-20.2.2-40.3.4-60.5h-251v.4z'
         id='prefix___x35_0_x25_'
       />
@@ -34,36 +40,36 @@ const original = (props) => {
         className='prefix__st1'
         d='M124.5 374.4h251c0-4.3.1-8.5.1-12.8.2-18.4-3.7-34.3-12.6-47.7H139.8c-10.7 17.4-16 37.5-15.3 60.5z'
         id='prefix___x36_0_x25_'
-        fill={entire(color)}
+        fill={bottleColor()}
       />
       <path
         className='prefix__st1'
         d='M186.5 254.1c.1 11.1-3.3 18.1-12.6 24.7-14.5 10.2-25.9 21.9-34.1 35.2H363c-5.6-8.5-13.2-16.1-23-22.7-5-3.4-10.6-6.3-14.8-10.5-3.4-3.4-7.1-8.3-7.4-12.7-.4-4.8-.6-9.7-.8-14.5H186.5v.5z'
         id='prefix___x37_0_x25_'
-        fill={entire(color)}
+        fill={bottleColor()}
       />
       <path
         className='prefix__st1'
         d='M186.5 253.4H317c-.5-13.4-.6-26.7-1.5-40.1-.5-6.8-1-13.6-1.6-20.4H188.5c-1.9 20.1-2.2 40.3-2 60.5z'
         id='prefix___x38_0_x25_'
-        fill={entire(color)}
+        fill={bottleColor()}
       />
       <path
         className='prefix__st1'
         d='M199.3 136c-1.2 3.8-2.4 7.6-3.3 11.4-3.7 15-6 30.2-7.4 45.4H314c-2-20.5-5.2-40.7-11.8-60.5H200.3c-.3 1.3-.7 2.5-1 3.7z'
         id='prefix___x39_0_x25_'
-        fill={entire(color)}
+        fill={bottleColor()}
       />
       <g id='prefix___x31_00_x25_'>
         <path
           className='prefix__st1'
-          fill={entire(color)}
+          fill={bottleColor()}
           d='M246.2 677h-.2.2zM207.3 97.8c-.3 13.2-3.8 23.3-7 34.6h101.8c-.7-2.2-1.5-4.5-2.3-6.7-2.4-6.3-6.3-14.3-6.2-21.4.2-9.1.9-17.9 1.4-27 .1-1.8.8-4.3 1.5-5.5l-90.8.7c.8 1.1.2 10.6.9 11.8 0 6.4.8 5.5.7 13.5z'
         />
       </g>
       <path
         d='M309 225c-.2-8.7-.5-17.8-1.1-26.5-.6-8.2-1.2-16.7-2.2-25.4l-105.7-45c-.4 1.3-.7 2.5-1 3.7-5.6 22.3-8.1 44.7-9.1 66.6l120 51.9c-.4-8.5-.7-17.1-.9-25.3z'
-        fill='#c69c6d'
+        fill={bottleID()}
         id='prefix__Layer_2'
       />
       <path
@@ -74,12 +80,12 @@ const original = (props) => {
       <text transform='translate(229.77 638.207)' className='prefix__st4' fontSize={14.384} fontFamily='MyriadPro-Regular' id='prefix__Degree'>
         {'5% Alc'}
       </text>
-      <path fill='#c69c6d' stroke='#603813' strokeMiterlimit={10} d='M367 582l-234-51V356l234 51z' id='prefix__Labe_3' />
-      <path fill='#c69c6d' stroke='#603813' strokeWidth={1.03} strokeMiterlimit={10} d='M133 374.5h234V560H133z' id='prefix__Label_2' />
+      <path fill={bottleID()} stroke='#603813' strokeMiterlimit={10} d='M367 582l-234-51V356l234 51z' id='prefix__Labe_3' />
+      <path fill={bottleID()} stroke='#603813' strokeWidth={1.03} strokeMiterlimit={10} d='M133 374.5h234V560H133z' id='prefix__Label_2' />
       <g id='prefix__Label'>
         <path
           d='M250.2 585.3c-21.2 0-41.1-7.6-53.1-20.4-3.3-3.5-9-4-10.7-4.1-7-.3-12.7-.5-17.9-.5-4.5 0-8.7.1-12.7.3h-1.4c-5.7 0-8.8-1.8-8.8-11.2-.1-38.2-.4-77.1-.7-114.7l-.2-23.9c-.1-12.7-.3-24.2-.6-34.9-.1-3.7.5-6.3 1.9-7.7 1.1-1.1 2.8-1.7 5.2-1.7.4 0 .9 0 1.4.1 1.5.1 3.2.2 5.1.2 1.4 0 2.8 0 4.2-.1 1.4 0 2.7-.1 4.1-.1h2.8c1.4.1 2.7.1 4 .1 14.6 0 27.4-3.3 40.2-10.3 12.2-6.7 24.7-10.2 37.3-10.2 15.9 0 31.8 5.5 47.2 16.2 3.4 2.4 7.6 3.9 11.4 4 4.3.2 8.9.2 14.6.2h20.7c11.3 0 11.6.4 11.7 12.4v86.2h.1v22.2c0 20.3-.1 41.3.2 62 .1 4.6-.7 7.7-2.4 9.3-1.3 1.3-3.2 1.9-6 1.9-.6 0-1.2 0-1.8-.1-1.1-.1-2.3-.1-3.7-.1H336c-.8 0-1.6 0-2.4-.1-2.1-.1-4.1-.2-5.9-.2-14.7 0-25.5 3.6-35.9 12.1-10.1 8.4-25.2 13.1-41.6 13.1z'
-          fill='#c1b49a'
+          fill={emblemColor()}
         />
         <path
           className='prefix__st4'
@@ -165,4 +171,4 @@ const original = (props) => {
   );
 };
 
-export default original;
+export default BeerSVG;

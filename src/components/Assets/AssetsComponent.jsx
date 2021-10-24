@@ -5,7 +5,7 @@ import { SubstrateContext } from '../../services/substrate';
 import styles from './AssetsComponent.module.scss';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-import Original from '../../assets/assetsPage/original';
+import BeerSVG from '../../assets/assetsPage/BeerSVG';
 import GridLoader from 'react-spinners/GridLoader';
 import ReactCardFlip from 'react-card-flip';
 import category1 from '../../assets/assetsPage/category1.jpg';
@@ -64,7 +64,7 @@ const Assetscomponent = () => {
                   <ReactCardFlip key={asset.identifier} isFlipped={asset.flip} flipDirection='horizontal'>
                     <div className={`${styles.card}`} onClick={() => flip(asset)}>
                       <div className={styles.title}>{asset.name}</div>
-                      <div className={styles.identifier}>{asset.identifier}</div>
+                      <div className={styles.identifier}>#{asset.identifier}</div>
                       <div className={styles.type}>{asset.type}</div>
                       <img
                         src={
@@ -77,7 +77,7 @@ const Assetscomponent = () => {
                         className={styles.background}
                       />
                       <div className={styles.img}>
-                        <Original asset={asset} />
+                        <BeerSVG asset={asset} />
                       </div>
                     </div>
 

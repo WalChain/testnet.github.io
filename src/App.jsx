@@ -9,6 +9,7 @@ import Dev from './pages/Dev';
 import Footer from './components/Global/Footer/Footer';
 import Collections from './pages/Collections';
 import Assets from './pages/Assets';
+import Ownassets from './pages/OwnAssets'
 
 const App = () => {
   const childRef = useRef();
@@ -23,6 +24,7 @@ const App = () => {
             <Route exact path='/dev' component={() => <Dev />}></Route>
             <Route exact path='/collections' component={() => <Collections />}></Route>
             <Route exact path='/asset/:id' component={() => <Assets />}></Route>
+            <Route exact path='/owned' component={() => <Ownassets />}></Route>
           </Switch>
           <Footer />
         </div>

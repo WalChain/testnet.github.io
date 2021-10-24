@@ -19,11 +19,15 @@ const Footer = () => {
             </Link>
           </div>
           <div>
+            <Link className='reactLink' to='/owned'>
+              ASSETS
+            </Link>
+          </div>
+          <div>
             <Link className='reactLink' to='/instructions'>
               INSTRUCTIONS
             </Link>
           </div>
-          <div>CONTACTS</div>
           <div>ABOUT</div>
         </div>
         <hr />

@@ -27,9 +27,9 @@ const Navbar = forwardRef((props, ref) => {
           <Link to='/collections' className={styles.link} data-content='COLLECTIONS'>
             COLLECTIONS
           </Link>
-          <div className={styles.link} data-content='ABOUT US'>
-            ABOUT US
-          </div>
+          <Link to='/owned' className={styles.link} data-content='ASSETS'>
+            ASSETS
+          </Link>
         </div>
         <div className={styles.dropdown}>
           <div className={styles.hamburger} data-dropdown>
@@ -42,7 +42,9 @@ const Navbar = forwardRef((props, ref) => {
             <Link to='/collections' className={`${styles.smLink} reactLink`}>
               COLLECTIONS
             </Link>
-            <div className={styles.smLink}>ABOUT US</div>
+            <Link to='/owned' className={`${styles.smLink} reactLink`}>
+              ASSETS
+            </Link>
           </div>
         </div>
       </div>
