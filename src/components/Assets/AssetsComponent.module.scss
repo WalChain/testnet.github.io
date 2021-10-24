@@ -1,5 +1,4 @@
 @import '../../index.scss';
-$bgcard: #f0f8ff;
 .body {
   display: flex;
   justify-content: center;
@@ -25,13 +24,11 @@ $bgcard: #f0f8ff;
     height: 310px;
     box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
     border-radius: 15px;
-    background-color: $bgcard;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.5);
-    border-left: 1px solid rgba(255, 255, 255, 0.5);
+
     cursor: pointer;
     user-select: none;
     color: #fff;
@@ -40,26 +37,21 @@ $bgcard: #f0f8ff;
       height: 310px;
       object-fit: cover;
     }
-    .identifier {
-      position: absolute;
-      top: 5px;
-      font-size: 2.2em;
-    }
     .title {
       position: absolute;
-      top: 75%;
+      top: 70%;
       font-size: 1.3em;
     }
     .type {
       position: absolute;
-      top: 85%;
+      top: 80%;
       font-size: 1.3em;
     }
     .img {
       width: 120px;
       height: 120px;
       position: absolute;
-      top: 19%;
+      top: 13%;
     }
     .content {
       padding: 20px;
@@ -68,7 +60,6 @@ $bgcard: #f0f8ff;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      background-color: $bgcard;
       position: relative;
       user-select: none;
       isolation: isolate;
@@ -106,6 +97,16 @@ $bgcard: #f0f8ff;
       }
     }
   }
+}
+
+.front-ribbon {
+  position: absolute;
+  width: 140px;
+  height: 30px;
+  transform: rotate(45deg);
+  top: 15px;
+  right: -40px;
+  text-align: center;
 }
 
 .pagination {

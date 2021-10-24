@@ -8,6 +8,7 @@ import Stack from '@mui/material/Stack';
 import BeerSVG from '../../assets/assetsPage/BeerSVG';
 import GridLoader from 'react-spinners/GridLoader';
 import ReactCardFlip from 'react-card-flip';
+import { attributes } from '../../helpers';
 import category1 from '../../assets/assetsPage/category1.jpg';
 import category2 from '../../assets/assetsPage/category2.jpg';
 import category3 from '../../assets/assetsPage/category3.jpg';
@@ -40,6 +41,10 @@ const Assetscomponent = () => {
     setassets(allAssets);
   };
 
+  const getId = (id) => {
+    const first = id.split('').at(-1);
+    return first;
+  };
   useEffect(() => {
     const get = async () => {
       const assets = await queries.getAllAssets(api, id);
@@ -48,6 +53,7 @@ const Assetscomponent = () => {
     };
     api && get();
   }, [api]);
+
   return (
     <div className={styles.body}>
       {loading && (
@@ -63,8 +69,10 @@ const Assetscomponent = () => {
                 return (
                   <ReactCardFlip key={asset.identifier} isFlipped={asset.flip} flipDirection='horizontal'>
                     <div className={`${styles.card}`} onClick={() => flip(asset)}>
+                      <div className={styles['front-ribbon']} style={{ backgroundColor: attributes.idColor[getId(asset.identifier)] }}>
+                        #{asset.identifier}
+                      </div>
                       <div className={styles.title}>{asset.name}</div>
-                      <div className={styles.identifier}>#{asset.identifier}</div>
                       <div className={styles.type}>{asset.type}</div>
                       <img
                         src={
