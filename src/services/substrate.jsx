@@ -143,6 +143,14 @@ export const SubstrateProvider = ({ children }) => {
     }
   };
 
+  // Transfer Assets to someone else //
+  const transferAsset = async (transaction) => {
+    const data = [transaction.collection, transaction.id, transaction.address];
+    const fromAcct = await helper.getFromAcct(main, api, keyring);
+    let txExecute = api.tx.uniques.transfer(...data);
+    return await helper.submitTransactions(fromAcct, txExecute, api, setStatus);
+  };
+
   useEffect(() => {
     connection();
   }, []);
@@ -159,6 +167,7 @@ export const SubstrateProvider = ({ children }) => {
         createCollection,
         createAsset,
         createTonsAssets,
+        transferAsset,
       }}
     >
       {children}

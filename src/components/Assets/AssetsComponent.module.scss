@@ -1,10 +1,10 @@
 @import '../../index.scss';
 .body {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  // background-color: #161623;
+  background-color: #161623;
   width: 100vw;
   min-height: 75vh;
 }

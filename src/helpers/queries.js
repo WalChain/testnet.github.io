@@ -62,7 +62,7 @@ export const getAccountAssets = async (api, account) => {
       })
     );
     const total = [].concat.apply([], all);
-    const filtered = total.filter((asset) => asset.owner === account);
+    const filtered = total.filter((asset) => asset && asset.owner === account);
     return filtered;
   } catch (e) {
     console.log(e);

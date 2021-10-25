@@ -24,20 +24,22 @@ import Select from '@mui/material/Select';
 import Box from '@mui/material/Box';
 
 const Owned = () => {
-  const { api, main, accounts } = useContext(SubstrateContext);
+  const { api, main, accounts, transferAsset } = useContext(SubstrateContext);
   const [assets, setassets] = useState([]);
+  const [AccountsList, setAccountsList] = useState([]);
   const [currentPage, setcurrentPage] = useState(1);
   const [open, setopen] = useState(false);
+  const [transaction, settransaction] = useState({});
   const assetsPerPage = (width) => {
     return (width >= 1800 && 15) || (width < 1800 && screen.width >= 1600 && 12) || (width < 1600 && width > 500 && 9) || (width < 500 && 5);
   };
   const [loading, setloading] = useState(true);
-  let pageNumber = Math.ceil(assets.length / assetsPerPage(screen.width));
+  let pageNumber = Math.ceil(assets && assets.length / assetsPerPage(screen.width));
 
   // Get Current assets //
   const indexOfLastAsset = currentPage * assetsPerPage(screen.width);
   const indexOfFirstPost = indexOfLastAsset - assetsPerPage(screen.width);
-  const currentAssets = assets.slice(indexOfFirstPost, indexOfLastAsset);
+  const currentAssets = assets && assets.slice(indexOfFirstPost, indexOfLastAsset);
   const handleChange = (e, page) => {
     page === null && null;
     page !== null && setcurrentPage(page);
@@ -56,21 +58,34 @@ const Owned = () => {
   };
 
   const handleClickOpen = (target) => {
-    console.log(target);
+    settransaction({ collection: target.collection, id: target.identifier });
     setopen(true);
   };
   const handleClose = () => {
     setopen(false);
   };
-  useEffect(() => {
-    const get = async () => {
-      const tempAssets = await queries.getAccountAssets(api, main);
+  const send = async (transaction) => {
+    try {
+      setloading(true);
+      setopen(false);
+      await transferAsset(transaction);
+      setassets(assets.filter((asset) => asset.identifier !== transaction.id));
       setloading(false);
-      setassets(tempAssets);
-    };
+    } catch (e) {
+      setloading(false);
+    }
+  };
+  const get = async () => {
+    const tempAssets = await queries.getAccountAssets(api, main);
+    setloading(false);
+    setassets(tempAssets);
+  };
+
+  useEffect(() => {
+    const tempAccts = accounts.filter((account) => account.address !== main);
+    setAccountsList(tempAccts);
     api && main && get();
-  }, [main]);
-  console.log(accounts);
+  }, [main, accounts]);
   return (
     <div className={styles.body}>
       {loading && (
@@ -84,7 +99,13 @@ const Owned = () => {
             {assets &&
               currentAssets.map((asset) => {
                 return (
-                  <ReactCardFlip key={asset.identifier} isFlipped={asset.flip} flipDirection='horizontal'>
+                  <ReactCardFlip
+                    key={asset.identifier}
+                    isFlipped={asset.flip}
+                    flipDirection='horizontal'
+                    flipSpeedBackToFront='0.3'
+                    flipSpeedFrontToBack='0.3'
+                  >
                     <div className={`${styles.card}`} onClick={() => flip(asset)}>
                       <div className={styles['front-ribbon']} style={{ backgroundColor: attributes.idColor[getId(asset.identifier)] }}>
                         #{asset.identifier}
@@ -128,14 +149,16 @@ const Owned = () => {
                 );
               })}
           </div>
-          <Stack className={styles.pagination} spacing={2}>
-            <Pagination
-              count={pageNumber}
-              color='primary'
-              size={`${screen.width > 400 ? 'large' : 'small'}`}
-              onChange={(e, page) => handleChange(e, page)}
-            />
-          </Stack>
+          {assets && assets.length !== 0 && (
+            <Stack className={styles.pagination} spacing={2}>
+              <Pagination
+                count={pageNumber}
+                color='primary'
+                size={`${screen.width > 400 ? 'large' : 'small'}`}
+                onChange={(e, page) => handleChange(e, page)}
+              />
+            </Stack>
+          )}
         </>
       )}
       <Dialog open={open} onClose={handleClose} aria-labelledby='alert-dialog-title' aria-describedby='alert-dialog-description'>
@@ -144,17 +167,33 @@ const Owned = () => {
           <Box className={styles.dialog} sx={{ minWidth: 120 }}>
             <FormControl style={{ width: '200px' }}>
               <InputLabel id='demo-simple-select-label'>Name</InputLabel>
-              <Select labelId='demo-simple-select-label' id='demo-simple-select' value='' label='asset' onChange={handleChange}>
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+              <Select
+                defaultValue=''
+                labelId='demo-simple-select-label'
+                id='demo-simple-select'
+                value={transaction.address || ''}
+                label='asset'
+                name='address'
+                onChange={(event) =>
+                  settransaction((prevState) => {
+                    return { ...prevState, address: event.target.value };
+                  })
+                }
+              >
+                {AccountsList.map((acc) => {
+                  return (
+                    <MenuItem key={acc.address} value={acc.address}>
+                      {acc.meta.name}
+                    </MenuItem>
+                  );
+                })}
               </Select>
             </FormControl>
           </Box>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} autoFocus>
-            Agree
+          <Button onClick={() => send(transaction)} autoFocus>
+            Envoyer
           </Button>
         </DialogActions>
       </Dialog>
