@@ -1,7 +1,7 @@
 import { attributes } from '../../helpers';
 
 const BeerSVG = (props) => {
-  const { color, identifier } = props.asset;
+  const { color, identifier, type } = props.asset;
   const first = identifier.split('').at(-1);
   const bottleColor = () => {
     return attributes.colors[color];
@@ -10,7 +10,7 @@ const BeerSVG = (props) => {
     return attributes.idColor[first];
   };
   const emblemColor = () => {
-    return attributes.emblemColor[first];
+    return attributes.emblemColor[type.length];
   };
   return (
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 700'>

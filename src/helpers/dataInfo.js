@@ -5,12 +5,12 @@ export const instancesAttributes = ['name', 'color', 'type', 'category', 'identi
 export const collectionNumber = 2;
 export const arrayCollection = Array.from(Array(collectionNumber).keys());
 arrayCollection.push(collectionNumber);
-export const colors = { Blonde: '#FEEB75', Brune: '#3A1E08', Ambre: '#893101', Red: '#D0312D', Blanche: '#FFE864' };
+export const colors = { Blonde: '#CDBB3B', Brune: '#3A1E08', Ambre: '#893101', Red: '#D0312D', Blanche: '#FFFCAF' };
 export const idColor = {
   0: '#34568B',
-  1: '#FF6F61',
+  1: '#85144b',
   2: '#6B5B95',
-  3: '#88B04B',
+  3: '#DD4124',
   4: '#001f3f',
   5: '#B10DC9',
   6: '#955251',
@@ -19,7 +19,6 @@ export const idColor = {
   9: '#3D9970',
 };
 export const emblemColor = {
-  0: '#c69c6d',
   1: '#ff6699',
   2: '#ccff66',
   3: '#DFCFBE',
@@ -29,4 +28,15 @@ export const emblemColor = {
   7: '#cccc00',
   8: '#EFC050',
   9: '#45B8AC',
+  10: '#c69c6d',
+  11: '#ff6699',
+  12: '#FF6F61',
+  13: '#5B5EA6',
+  14: '#7FCDCD',
+  15: '#98B4D4',
+  16: '#9BB7D4',
+  17: '#F5DF4D',
+  18: '#0072B5',
+  19: '#A0DAA9',
+  20: '#EFE1CE',
 };

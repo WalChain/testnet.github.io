@@ -1,5 +1,4 @@
-import { arrayCollection, collectionsAttributes, instancesAttributes } from './dataInfo';
-
+import { arrayCollection, collectionsAttributes, instancesAttributes, collectionNumber } from './dataInfo';
 export const getSingleCollection = async (id, api) => {
   const collection = await api.query.uniques.class(id);
   const creator = collection.toHuman() && collection.toHuman().owner;
@@ -43,11 +42,29 @@ export const getAllAssets = async (api, id) => {
         const category = (tempCategory.toHuman() && tempCategory.toHuman()[0]) || 'No Category';
         const tempIdentifier = await api.query.uniques.attribute(id, instanceId, instancesAttributes[4]);
         const identifier = (tempIdentifier.toHuman() && tempIdentifier.toHuman()[0]) || 'No ID but not possible';
-        return { owner, name, color, type, category, identifier, flip: false };
+        return { owner, name, color, type, category, identifier, flip: false, collection: id };
       })
     );
     return allInstances;
   } catch (e) {
     return;
+  }
+};
+
+export const getAccountAssets = async (api, account) => {
+  try {
+    const count = [...Array(collectionNumber).keys()];
+    count.push(collectionNumber);
+    const all = await Promise.all(
+      count.map(async (identifier) => {
+        const assets = await getAllAssets(api, identifier);
+        return assets;
+      })
+    );
+    const total = [].concat.apply([], all);
+    const filtered = total.filter((asset) => asset.owner === account);
+    return filtered;
+  } catch (e) {
+    console.log(e);
   }
 };

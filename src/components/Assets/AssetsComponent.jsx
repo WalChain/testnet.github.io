@@ -10,7 +10,7 @@ import GridLoader from 'react-spinners/GridLoader';
 import ReactCardFlip from 'react-card-flip';
 import { attributes } from '../../helpers';
 import category1 from '../../assets/assetsPage/category1.jpg';
-import category2 from '../../assets/assetsPage/category2.jpg';
+import category2 from '../../assets/assetsPage/category2.png';
 import category3 from '../../assets/assetsPage/category3.jpg';
 import category4 from '../../assets/assetsPage/category4.jpg';
 
@@ -61,7 +61,7 @@ const Assetscomponent = () => {
           <GridLoader color='#8AE6D5' />
         </div>
       )}
-      {!loading && (
+      {!loading && assets.length !== 0 && (
         <>
           <div className={styles.container}>
             {assets &&

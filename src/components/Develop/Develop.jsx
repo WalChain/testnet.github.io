@@ -1,17 +1,12 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { SubstrateContext } from '../../services/substrate';
 import FadeLoader from 'react-spinners/FadeLoader';
 
 const Develop = () => {
-  const { api, loadAccounts, accounts, balances, getTokens, status, createCollection, createAsset, createTonsAssets, loading } =
-    useContext(SubstrateContext);
+  const { api, accounts, balances, getTokens, status, createCollection, createAsset, createTonsAssets, loading } = useContext(SubstrateContext);
   const [collection, setcollection] = useState({});
   const [instance, setinstance] = useState({});
   const [tons, settons] = useState({});
-  useEffect(() => {
-    api && loadAccounts();
-    return () => api && loadAccounts();
-  }, [api]);
 
   const onChange = (e, target) => {
     if (target === 'collection') {

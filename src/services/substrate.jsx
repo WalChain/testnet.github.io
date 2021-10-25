@@ -17,11 +17,12 @@ export const SubstrateProvider = ({ children }) => {
   const connection = async () => {
     const wsProvider = new WsProvider('wss://testnet-rpc.walchain.be:443');
     let con = await ApiPromise.create({ provider: wsProvider });
+    loadAccounts(con);
     setapi(con);
     setloading(false);
   };
 
-  const loadAccounts = async () => {
+  const loadAccounts = async (api) => {
     try {
       await web3Enable('Walchain Testnet');
       let accs = await web3Accounts();
@@ -149,7 +150,6 @@ export const SubstrateProvider = ({ children }) => {
     <SubstrateContext.Provider
       value={{
         api,
-        loadAccounts,
         accounts,
         balances,
         getTokens,
