@@ -28,7 +28,11 @@ const Footer = () => {
               INSTRUCTIONS
             </Link>
           </div>
-          <div>ABOUT</div>
+          <div>
+            <Link className='reactLink' to='/dev'>
+              DEV
+            </Link>
+          </div>
         </div>
         <hr />
         <div className={styles.text}>
