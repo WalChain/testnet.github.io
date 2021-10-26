@@ -11,17 +11,10 @@ const Introduction = ({ scroll }) => {
             <img src={sphere} alt='sphere' className={styles.sphere} />
           </div>
           <div className={styles.rightside}>
-            <div className={styles.title}>
-              Bienvenue dans le guide d&apos;installation
-            </div>
-            <div className={styles['first-paragraph']}>
-              Pour pouvoir accéder à la Walchain, rien de bien compliquer, il
-              vous suffit de suivre le guide ci-dessous
-            </div>
+            <div className={styles.title}>Welcome to the installation guide</div>
+            <div className={styles['first-paragraph']}>There&apos;s nothing simpler, just follow the guide below</div>
             <div className={styles['second-paragraph']}>
-              La Walchain tourne sous Polkadot, qui est actuellement la
-              plate-forme la plus robuste en matière de sécurité,
-              d&apos;évolutivité et d&apos;innovation
+              Walchain runs thanks to Polkadot which is the strongest plateform in terms of security, evolution and innovation
             </div>
           </div>
         </div>

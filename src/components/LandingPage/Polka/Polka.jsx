@@ -13,9 +13,9 @@ const Polka = () => {
             <img src={polkaIcon} alt='' />
           </div>
           <div className={styles.text}>
-            L&apos;extension et un compte polkadot seront nécessaires pour continuer.
+            The polkadot extension and an account will be necessary to continue
             <br />
-            N&apos;hésitez pas à suivre les instructions si vous êtes perdu
+            Do not hesitate to follow the instructions if you are lost
           </div>
           <Link to='instructions' style={{ textDecoration: 'none' }}>
             <div className={styles.button}>

@@ -31,10 +31,10 @@ const Getstarted = ({ refProp }) => {
             <div className={styles.icon}>
               <NavigateBeforeIcon />
             </div>
-            <div>PRECEDENT</div>
+            <div>PREVIOUS</div>
           </div>
           <div className={styles.next} onClick={() => change('next')}>
-            <div>SUIVANT</div>
+            <div>NEXT</div>
             <div className={styles.icon}>
               <NavigateNextIcon />
             </div>

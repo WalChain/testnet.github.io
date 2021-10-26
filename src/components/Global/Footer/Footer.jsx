@@ -32,10 +32,10 @@ const Footer = () => {
         </div>
         <hr />
         <div className={styles.text}>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas et itaque culpa labore maiores veniam soluta assumenda sapiente distinctio
-          quod pariatur vero dolor repellat saepe, similique laborum alias explicabo illo? Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-          Molestias laborum incidunt suscipit! Laborum blanditiis, aspernatur neque ratione dolore voluptatum rerum itaque rem, alias modi corporis
-          labore commodi doloremque amet dolorum.
+          The Blockchain in Wallonie <br />
+          The WalChain initiative, born from the gathering of Walloon blockchain startups. The purpose is to promote &quot;Made in Wallonia&quot;
+          blockchain as the innovative tool for building collaborative and transparent ecosystems but is also an opportunity to contrinute to a
+          sustainable economic redeployment in Wallonia
         </div>
         <div className={styles.blockicons}>
           <div className={styles.icons}>

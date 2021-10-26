@@ -8,10 +8,10 @@ const Miw = () => {
           <div className={styles.title}>Walchain</div>
           <div className={styles.MIW}>#MIW</div>
           <div className={styles.paragraph}>
-            La blockchain En Wallonie. <br />
-            L’initiative WalChain, née du rassemblement de startups blockchain wallonnes, vise à promouvoir la blockchain « Made In Wallonia » comme
-            outil novateur pour la construction d’écosystèmes collaboratifs et transparents mais aussi comme une opportunité de contribuer au
-            redéploiement économique durable en Wallonie.
+            The Blockchain in Wallonie <br />
+            The WalChain initiative, born from the gathering of Walloon blockchain startups. The purpose is to promote &quot;Made in Wallonia&quot;
+            blockchain as the innovative tool for building collaborative and transparent ecosystems but is also an opportunity to contrinute to a
+            sustainable economic redeployment in Wallonia
           </div>
           <div className={styles.button}>
             <a href='https://walchain.be/' rel='noreferrer' target='_blank'>
