@@ -25,14 +25,12 @@ const Polka = () => {
               </div>
             </div>
           </Link>
-          <div className={styles.button}>
-            <a href='https://polkadot.js.org/extension/' target='_blank rel="noreferrer" '>
-              <div className={styles.download}>DOWNLOAD EXTENSION</div>
-              <div className={styles.dll}>
-                <DownloadIcon />
-              </div>
-            </a>
-          </div>
+          <a href='https://polkadot.js.org/extension/' className={styles.button} target='_blank rel="noreferrer" '>
+            <div className={styles.download}>DOWNLOAD EXTENSION</div>
+            <div className={styles.dll}>
+              <DownloadIcon />
+            </div>
+          </a>
         </div>
       </div>
     </>

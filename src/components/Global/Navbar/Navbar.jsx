@@ -85,7 +85,7 @@ const Navbar = forwardRef((props, ref) => {
         <DialogContent>
           <Box className={styles.dialog} sx={{ minWidth: 120 }}>
             <FormControl style={{ width: '300px' }}>
-              <InputLabel id='demo-simple-select-label'>Account</InputLabel>
+              <InputLabel id='demo-simple-select-label'>Name</InputLabel>
               <Select
                 labelId='demo-simple-select-label'
                 id='demo-simple-select'

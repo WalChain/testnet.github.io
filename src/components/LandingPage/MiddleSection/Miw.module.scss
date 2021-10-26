@@ -30,6 +30,7 @@
         font-family: 'Rajdhani', sans-serif;
       }
       .button {
+        display: block;
         background-color: #fe022a;
         color: #ffffff;
         width: 100%;
@@ -42,6 +43,7 @@
         padding: 20px 0px;
         letter-spacing: 1.25px;
         cursor: pointer;
+        text-decoration: none;
         transition: transform 0.1s ease-in-out;
         a {
           color: white;

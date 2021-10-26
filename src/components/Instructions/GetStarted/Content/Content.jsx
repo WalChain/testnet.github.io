@@ -10,14 +10,12 @@ const Content = ({ number }) => {
           <div className={styles.content}>
             <div className={styles.title}>STEP {number}</div>
             <div className={styles.paragraph}>Install the extension by clicking on the button below</div>
-            <div className={styles.button}>
-              <a href='https://polkadot.js.org/extension/' target='_blank rel="noreferrer" '>
-                <div className={styles.download}>DOWNLOAD EXTENSION</div>
-                <div className={styles.dll}>
-                  <DownloadIcon />
-                </div>
-              </a>
-            </div>
+            <a className={styles.button} href='https://polkadot.js.org/extension/' target='_blank rel="noreferrer" '>
+              <div className={styles.download}>DOWNLOAD EXTENSION</div>
+              <div className={styles.dll}>
+                <DownloadIcon />
+              </div>
+            </a>
           </div>
         </div>
         <div className={styles['right-side']}>

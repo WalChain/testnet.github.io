@@ -13,11 +13,9 @@ const Miw = () => {
             blockchain as the innovative tool for building collaborative and transparent ecosystems but is also an opportunity to contrinute to a
             sustainable economic redeployment in Wallonia
           </div>
-          <div className={styles.button}>
-            <a href='https://walchain.be/' rel='noreferrer' target='_blank'>
-              EN SAVOIR PLUS
-            </a>
-          </div>
+          <a href='https://walchain.be/' className={styles.button} rel='noreferrer' target='_blank'>
+            EN SAVOIR PLUS
+          </a>
         </div>
       </div>
       <div className={styles.background}></div>
