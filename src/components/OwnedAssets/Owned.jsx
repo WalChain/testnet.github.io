@@ -17,16 +17,13 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
 import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 
 const Owned = () => {
   const { api, main, accounts, transferAsset } = useContext(SubstrateContext);
   const [assets, setassets] = useState([]);
-  const [AccountsList, setAccountsList] = useState([]);
   const [currentPage, setcurrentPage] = useState(1);
   const [open, setopen] = useState(false);
   const [transaction, settransaction] = useState({});
@@ -82,8 +79,6 @@ const Owned = () => {
   };
 
   useEffect(() => {
-    const tempAccts = accounts.filter((account) => account.address !== main);
-    setAccountsList(tempAccts);
     api && main && get();
   }, [main, accounts]);
   return (
@@ -141,8 +136,8 @@ const Owned = () => {
                         <h3>{asset.name}</h3>
                         <p>Type : {asset.type}</p>
                         <p>Color : {asset.color}</p>
-                        <p>Owner : {asset.owner}</p>
-                        <div onClick={() => handleClickOpen(asset)}> Transfert</div>
+                        <p className={styles.address}>Owner : {asset.owner}</p>
+                        <div onClick={() => handleClickOpen(asset)}> Transfer</div>
                       </div>
                     </div>
                   </ReactCardFlip>
@@ -162,12 +157,11 @@ const Owned = () => {
         </>
       )}
       <Dialog open={open} onClose={handleClose} aria-labelledby='alert-dialog-title' aria-describedby='alert-dialog-description'>
-        <DialogTitle id='alert-dialog-title'>Destinataire</DialogTitle>
+        <DialogTitle id='alert-dialog-title'>Recipient</DialogTitle>
         <DialogContent>
           <Box className={styles.dialog} sx={{ minWidth: 120 }}>
-            <FormControl style={{ width: '200px' }}>
-              <InputLabel id='demo-simple-select-label'>Name</InputLabel>
-              <Select
+            <FormControl style={{ width: '400px' }}>
+              {/* <Select
                 defaultValue=''
                 labelId='demo-simple-select-label'
                 id='demo-simple-select'
@@ -187,13 +181,25 @@ const Owned = () => {
                     </MenuItem>
                   );
                 })}
-              </Select>
+              </Select> */}
+              <TextField
+                required
+                id='outlined-required'
+                label='Required'
+                defaultValue=''
+                onChange={(event) =>
+                  settransaction((prevState) => {
+                    return { ...prevState, address: event.target.value };
+                  })
+                }
+              />
             </FormControl>
           </Box>
         </DialogContent>
         <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
           <Button onClick={() => send(transaction)} autoFocus>
-            Envoyer
+            Send
           </Button>
         </DialogActions>
       </Dialog>

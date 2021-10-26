@@ -61,6 +61,10 @@ export const SubstrateProvider = ({ children }) => {
     }
   };
 
+  const changeAccount = (account) => {
+    setmain(account)
+  }
+
   // Get Tokens  //
   const getTokens = async (api, address) => {
     try {
@@ -112,7 +116,7 @@ export const SubstrateProvider = ({ children }) => {
 
   // Create 200 assets for a specific collection //
   const createTonsAssets = async (id) => {
-    let arrayNumber = Array.from(Array(150).keys());
+    let arrayNumber = Array.from(Array(80).keys());
     arrayNumber = arrayNumber.map((id) => id.toString());
     const fromAcct = await helper.getFromAcct(main, api, keyring);
     let txExecute = [];
@@ -168,6 +172,7 @@ export const SubstrateProvider = ({ children }) => {
         createAsset,
         createTonsAssets,
         transferAsset,
+        changeAccount
       }}
     >
       {children}

@@ -10,7 +10,7 @@
   left: 0;
   z-index: 100;
   .links {
-    padding: 0 8rem;
+    padding: 0 6rem;
     display: flex;
     align-items: center;
     height: 100%;
@@ -96,6 +96,13 @@
   }
 }
 
+.dialog {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90px;
+}
+
 @media (max-width: $breakpoint-md) {
   .nav > .links {
     padding: 0;
@@ -105,7 +112,7 @@
   }
 }
 
-@media (max-width: $breakpoint-sm) {
+@media (max-width: 920px) {
   .nav > .links {
     padding: 0 1rem;
     .link {
@@ -114,6 +121,11 @@
     .dropdown {
       display: block;
     }
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .nav > .links {
     .logo > .walchain {
       width: 200px;
     }

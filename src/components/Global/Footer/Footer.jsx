@@ -20,7 +20,7 @@ const Footer = () => {
           </div>
           <div>
             <Link className='reactLink' to='/owned'>
-              ASSETS
+              MY NFT
             </Link>
           </div>
           <div>

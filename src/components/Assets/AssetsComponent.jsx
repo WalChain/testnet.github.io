@@ -104,7 +104,7 @@ const Assetscomponent = () => {
                         <h3>{asset.name}</h3>
                         <p>Type : {asset.type}</p>
                         <p>Color : {asset.color}</p>
-                        <p>Owner : {asset.owner}</p>
+                        <p className={styles.address}>Owner : {asset.owner}</p>
                         <div> Acheter</div>
                       </div>
                     </div>

@@ -9,7 +9,7 @@ import Dev from './pages/Dev';
 import Footer from './components/Global/Footer/Footer';
 import Collections from './pages/Collections';
 import Assets from './pages/Assets';
-import Ownassets from './pages/OwnAssets'
+import Ownassets from './pages/OwnAssets';
 
 const App = () => {
   const childRef = useRef();
