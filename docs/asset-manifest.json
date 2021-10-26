@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "./static/css/main.bbbd8c55.chunk.css",
+    "main.js": "./static/js/main.d15009ef.chunk.js",
+    "main.js.map": "./static/js/main.d15009ef.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.d1051ef3.js",
+    "runtime-main.js.map": "./static/js/runtime-main.d1051ef3.js.map",
+    "static/js/2.05175eef.chunk.js": "./static/js/2.05175eef.chunk.js",
+    "static/js/2.05175eef.chunk.js.map": "./static/js/2.05175eef.chunk.js.map",
+    "static/js/3.716d2332.chunk.js": "./static/js/3.716d2332.chunk.js",
+    "static/js/3.716d2332.chunk.js.map": "./static/js/3.716d2332.chunk.js.map",
+    "index.html": "./index.html",
+    "static/css/main.bbbd8c55.chunk.css.map": "./static/css/main.bbbd8c55.chunk.css.map",
+    "static/js/2.05175eef.chunk.js.LICENSE.txt": "./static/js/2.05175eef.chunk.js.LICENSE.txt",
+    "static/js/main.d15009ef.chunk.js.LICENSE.txt": "./static/js/main.d15009ef.chunk.js.LICENSE.txt",
+    "static/media/PolkaIcon.d7512b26.svg": "./static/media/PolkaIcon.d7512b26.svg",
+    "static/media/Sphere.95e49032.png": "./static/media/Sphere.95e49032.png",
+    "static/media/WalchainLogo.0c22f1af.svg": "./static/media/WalchainLogo.0c22f1af.svg",
+    "static/media/Miw.module.scss": "./static/media/background.54c41d3e.jpg",
+    "static/media/category1.2151c656.jpg": "./static/media/category1.2151c656.jpg",
+    "static/media/category2.37136ccc.png": "./static/media/category2.37136ccc.png",
+    "static/media/category3.f8e6a30f.jpg": "./static/media/category3.f8e6a30f.jpg",
+    "static/media/category4.3d65af71.jpg": "./static/media/category4.3d65af71.jpg",
+    "static/media/step1.62baa938.png": "./static/media/step1.62baa938.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d1051ef3.js",
+    "static/js/2.05175eef.chunk.js",
+    "static/css/main.bbbd8c55.chunk.css",
+    "static/js/main.d15009ef.chunk.js"
+  ]
+}
