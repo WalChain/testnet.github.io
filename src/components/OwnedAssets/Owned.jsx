@@ -4,7 +4,7 @@ import { SubstrateContext } from '../../services/substrate';
 import styles from './Owned.module.scss';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-import BeerSVG from '../../assets/assetsPage/BeerSVG';
+import SvgComponent from '../../assets/assetsPage/SvgComponent';
 import GridLoader from 'react-spinners/GridLoader';
 import ReactCardFlip from 'react-card-flip';
 import { attributes } from '../../helpers';
@@ -118,7 +118,7 @@ const Owned = () => {
                         className={styles.background}
                       />
                       <div className={styles.img}>
-                        <BeerSVG asset={asset} />
+                        <SvgComponent asset={asset} />
                       </div>
                     </div>
                     <div className={`${styles.card}`} onClick={() => flip(asset)}>
