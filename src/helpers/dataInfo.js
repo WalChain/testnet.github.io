@@ -2,7 +2,7 @@ export const beersColors = ['Blonde', 'Brune', 'Ambre', 'Red', 'Blanche'];
 export const beersType = ['1', '2', '3', '4'];
 export const collectionsAttributes = ['name'];
 export const instancesAttributes = ['name', 'color', 'type', 'category', 'identifier'];
-export const collectionNumber = 1;
+export const collectionNumber = 10;
 export const arrayCollection = Array.from(Array(collectionNumber).keys());
 arrayCollection.push(collectionNumber);
 export const colors = { Blonde: '#CDBB3B', Brune: '#3A1E08', Ambre: '#893101', Red: '#D0312D', Blanche: '#FFFCAF' };

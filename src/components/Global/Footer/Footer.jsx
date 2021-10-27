@@ -28,11 +28,11 @@ const Footer = () => {
               INSTRUCTIONS
             </Link>
           </div>
-          <div>
+          {/* <div>
             <Link className='reactLink' to='/dev'>
               DEV
             </Link>
-          </div>
+          </div> */}
         </div>
         <hr />
         <div className={styles.text}>

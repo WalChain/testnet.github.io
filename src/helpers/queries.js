@@ -7,7 +7,7 @@ export const getSingleCollection = async (id, api) => {
 
 export const getAllCollections = async (api) => {
   try {
-    let allCollections = Promise.all(
+    let allCollections = await Promise.all(
       arrayCollection.map(async (id) => {
         const collection = await api.query.uniques.class(id);
         const owner = collection.toHuman() && collection.toHuman().owner;
@@ -17,7 +17,8 @@ export const getAllCollections = async (api) => {
         return { owner, name, identifier };
       })
     );
-    return allCollections;
+    const filtered = allCollections.filter((collection) => collection.owner !== null);
+    return filtered;
   } catch (e) {
     return;
   }
