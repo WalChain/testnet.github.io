@@ -118,9 +118,6 @@ export const SubstrateProvider = ({ children }) => {
   const createTonsAssets = async (id) => {
     try {
       let arrayNumber = Array.from(Array(80).keys());
-      // remove later
-      arrayNumber.shift();
-      arrayNumber.shift();
       arrayNumber = arrayNumber.map((id) => id.toString());
       const fromAcct = await helper.getFromAcct(main, api, keyring);
       let txExecute = [];

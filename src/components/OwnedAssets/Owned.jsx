@@ -28,7 +28,13 @@ const Owned = () => {
   const [open, setopen] = useState(false);
   const [transaction, settransaction] = useState({});
   const assetsPerPage = (width) => {
-    return (width >= 1800 && 15) || (width < 1800 && screen.width >= 1600 && 12) || (width < 1600 && width > 500 && 9) || (width < 500 && 5);
+    return (
+      (width >= 1910 && 18) ||
+      (width < 1910 && width >= 1800 && 15) ||
+      (width < 1800 && width >= 1600 && 12) ||
+      (width < 1600 && width > 500 && 9) ||
+      (width < 500 && 5)
+    );
   };
   const [loading, setloading] = useState(true);
   let pageNumber = Math.ceil(assets && assets.length / assetsPerPage(screen.width));
