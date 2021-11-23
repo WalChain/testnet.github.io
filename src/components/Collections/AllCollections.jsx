@@ -6,6 +6,7 @@ import FadeLoader from 'react-spinners/FadeLoader';
 import styles from './AllCollection.module.scss';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Link } from 'react-router-dom';
+import Animation from './Background/animation';
 
 const Allcollections = () => {
   const { api } = useContext(SubstrateContext);
@@ -27,6 +28,7 @@ const Allcollections = () => {
         </div>
       )}
       <div className={styles.container}>
+        <Animation />
         {!loading && (
           <div className={styles.box}>
             <div className={styles.content}>
